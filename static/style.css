@@ -1,0 +1,155 @@
+/* Ovo Studio website. Palette and type follow brand/brand.md. */
+:root {
+  --ink: #151515;
+  --shell: #F3EFE6;
+  --yolk: #F4A300;
+  --graphite: #6B6862;
+  --paper: #FAF8F4;
+  --line: #E6E1D7;
+  --max: 1280px;
+  --gutter: clamp(16px, 4vw, 56px);
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Manrope, system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+.mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+/* ---------------------------------------------------------------- header */
+.site-head {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 14px var(--gutter);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.brand img { height: 38px; width: auto; }
+.site-nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); font-size: 15px; font-weight: 500; }
+.site-nav a:hover { color: var(--graphite); }
+.nav-cta {
+  background: var(--ink); color: var(--paper);
+  padding: 9px 18px; border-radius: 999px;
+}
+.nav-cta:hover { background: var(--yolk); color: var(--ink); }
+.lang { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--graphite); border: 1px solid var(--line); padding: 6px 10px; border-radius: 8px; }
+.lang:hover { border-color: var(--ink); color: var(--ink); }
+
+/* ---------------------------------------------------------------- shared */
+.band { padding: clamp(56px, 8vw, 104px) var(--gutter); max-width: var(--max); margin: 0 auto; }
+.band.alt { background: var(--shell); max-width: none; }
+.band.alt > * { max-width: var(--max); margin-inline: auto; }
+.section-title {
+  font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--graphite); margin-bottom: 30px;
+}
+h1 { font-size: clamp(2.5rem, 6vw, 4.4rem); font-weight: 700; line-height: 1.04; letter-spacing: -.03em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 700; letter-spacing: -.02em; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+.lede { font-size: clamp(1.05rem, 1.5vw, 1.3rem); color: #3A3A38; max-width: 62ch; }
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn {
+  display: inline-block; background: var(--ink); color: var(--paper);
+  padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: 16px;
+  transition: background .15s ease, color .15s ease, transform .15s ease;
+}
+.btn:hover { background: var(--yolk); color: var(--ink); transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--paper); }
+.chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li {
+  font-size: 12px; color: var(--graphite);
+  border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; background: var(--paper);
+}
+.chips li.concept { border-color: var(--yolk); color: #8A6100; }
+figcaption { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--graphite); margin-top: 10px; max-width: 70ch; }
+
+/* ---------------------------------------------------------------- hero */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 64px);
+  align-items: center; padding: clamp(44px, 7vw, 96px) var(--gutter) clamp(32px, 5vw, 64px);
+  max-width: var(--max); margin: 0 auto;
+}
+.hero .lede { margin-top: 20px; }
+.tools { font-size: 12.5px; color: var(--graphite); margin-top: 26px; letter-spacing: .02em; }
+.hero-shot picture img, .hero-shot img { border-radius: 18px; }
+
+/* ---------------------------------------------------------------- work */
+/* auto-fill, not auto-fit: a single project keeps card size instead of stretching wide */
+.work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 26px; }
+.card { display: block; border-radius: 16px; overflow: hidden; background: var(--paper); border: 1px solid var(--line); transition: transform .18s ease, box-shadow .18s ease; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(21, 21, 21, .10); }
+/* fixed frame, contained image: project shots have different aspect ratios (the lamp is
+   portrait) and would otherwise leave the card grid ragged. Contain, never crop a product. */
+.card figure { margin: 0; background: var(--shell); aspect-ratio: 4 / 3; }
+.card figure picture, .card figure img { width: 100%; height: 100%; object-fit: contain; }
+.card-body { padding: 20px 22px 24px; }
+.card-body p { color: var(--graphite); margin: 6px 0 14px; font-size: 15px; }
+
+/* ---------------------------------------------------------------- services */
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.service { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; display: flex; flex-direction: column; }
+.service .line { color: var(--graphite); margin: 8px 0 16px; }
+.service ul { margin: 0 0 18px; padding-left: 18px; color: #333; font-size: 15.5px; }
+.service li { margin-bottom: 7px; }
+.service .price { margin-top: auto; font-size: 13px; color: var(--ink); border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* ---------------------------------------------------------------- process */
+.process { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 26px; }
+.process .num { display: block; color: var(--yolk); font-size: 13px; margin-bottom: 10px; }
+.process p { color: var(--graphite); font-size: 15.5px; margin-top: 6px; }
+
+/* ---------------------------------------------------------------- studio + contact */
+.studio-body { max-width: 68ch; display: grid; gap: 16px; }
+.studio-body .meta { font-size: 13px; color: var(--graphite); }
+.contact { text-align: center; }
+.contact .lede { margin: 14px auto 28px; }
+
+/* ---------------------------------------------------------------- case study */
+.case { max-width: 1120px; margin: 0 auto; padding: clamp(28px, 5vw, 56px) var(--gutter) 40px; }
+.back { font-size: 14px; color: var(--graphite); }
+.back:hover { color: var(--ink); }
+.case-head h1 { margin: 18px 0 12px; font-size: clamp(2rem, 4.4vw, 3.2rem); }
+.case-head .chips { margin-top: 20px; }
+.case-hero { margin: 36px 0 0; }
+.case-hero picture img, .case-wide picture img, .case-pair picture img { border-radius: 16px; }
+.case-intro { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(24px, 4vw, 56px); margin: clamp(36px, 5vw, 64px) 0; align-items: start; }
+.summary { font-size: 1.2rem; line-height: 1.55; }
+.specs { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.specs th { text-align: left; font-weight: 500; color: var(--graphite); padding: 9px 12px 9px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.specs td { text-align: right; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.case-text { max-width: 68ch; margin: clamp(30px, 4vw, 52px) 0; }
+.case-text p { margin-top: 12px; color: #2E2E2C; }
+.case-wide { margin: clamp(30px, 4vw, 52px) 0; }
+.case-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: clamp(30px, 4vw, 52px) 0; }
+.case-pair figure { margin: 0; }
+.case-deliverables { border-top: 1px solid var(--line); padding-top: 28px; }
+.case-deliverables ul { margin: 14px 0 0; padding-left: 18px; columns: 2; column-gap: 40px; font-size: 15.5px; }
+.case-next { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: clamp(40px, 6vw, 72px); padding-top: 26px; border-top: 1px solid var(--line); font-weight: 600; }
+
+/* ---------------------------------------------------------------- footer */
+.site-foot { border-top: 1px solid var(--line); padding: 36px var(--gutter) 44px; display: grid; gap: 14px; max-width: var(--max); margin: 40px auto 0; }
+.foot-brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 18px; color: var(--graphite); font-size: 15px; }
+.foot-links a:hover { color: var(--ink); text-decoration: underline; }
+.foot-note { font-size: 12.5px; color: var(--graphite); }
+
+/* ---------------------------------------------------------------- responsive */
+@media (max-width: 900px) {
+  .hero, .case-intro { grid-template-columns: 1fr; }
+  .case-deliverables ul { columns: 1; }
+}
+@media (max-width: 700px) {
+  body { font-size: 16px; }
+  .site-nav a:not(.nav-cta):not(.lang) { display: none; }
+  .brand img { height: 32px; }
+}
