@@ -88,16 +88,47 @@ float h3(vec3 p){ p = fract(p * 0.3183099 + vec3(0.1, 0.2, 0.3)); p *= 17.0; ret
 
 // One part of a quantised web mesh (Cascade and the products share the format):
 // 10 bytes a vertex, int16 x,y,z against the part's own centre and scale, then
-// int8 nx,ny,nz and a pad byte, read as two views over the same bytes.
+// int8 nx,ny,nz and one byte of baked ambient occlusion (255 = open), read as
+// three views over the same bytes.
 function partGeometry(buf, p) {
   const g = new THREE.BufferGeometry();
   const n = p.vertices;
   const pos = new THREE.InterleavedBuffer(new Int16Array(buf, p.vertex_at, n * 5), 5);
   const nor = new THREE.InterleavedBuffer(new Int8Array(buf, p.vertex_at, n * 10), 10);
+  const occ = new THREE.InterleavedBuffer(new Uint8Array(buf, p.vertex_at, n * 10), 10);
   g.setAttribute("position", new THREE.InterleavedBufferAttribute(pos, 3, 0, false));
   g.setAttribute("normal", new THREE.InterleavedBufferAttribute(nor, 3, 6, true));
+  g.setAttribute("ao", new THREE.InterleavedBufferAttribute(occ, 1, 9, true));
   g.setIndex(new THREE.BufferAttribute(new Uint16Array(buf, p.index_at, p.triangles * 3), 1));
   return g;
+}
+
+// Baked occlusion into a standard or physical material, on top of whatever
+// onBeforeCompile it already has. It mostly takes out ambient and reflected
+// light, which is where occlusion lives, and only a little of the direct light.
+function withAO(mat, strength) {
+  const prev = mat.onBeforeCompile;
+  const prevKey = mat.customProgramCacheKey.bind(mat);
+  const k = { value: strength };
+  mat.onBeforeCompile = (sh, r) => {
+    prev.call(mat, sh, r);
+    sh.uniforms.uAOK = k;
+    sh.vertexShader = sh.vertexShader
+      .replace("#include <common>", "#include <common>\nattribute float ao;\nvarying float vAO;")
+      .replace("#include <begin_vertex>", "#include <begin_vertex>\nvAO = ao;");
+    sh.fragmentShader = sh.fragmentShader
+      .replace("#include <common>", "#include <common>\nvarying float vAO;\nuniform float uAOK;")
+      .replace("#include <aomap_fragment>", `#include <aomap_fragment>
+        {
+          float aoF = mix(1.0, 0.18 + 0.82 * smoothstep(0.0, 1.0, vAO), uAOK);
+          reflectedLight.indirectDiffuse *= aoF;
+          reflectedLight.indirectSpecular *= mix(1.0, aoF, 0.85);
+          reflectedLight.directDiffuse *= mix(1.0, aoF, 0.45);
+          reflectedLight.directSpecular *= mix(1.0, aoF, 0.35);
+        }`);
+  };
+  mat.customProgramCacheKey = () => prevKey() + "|ao";
+  return mat;
 }
 
 // ------------------------------------------------------------------ content
@@ -129,8 +160,8 @@ const WORK = [
   },
   {
     model: "axis", name: "Axis", type: "Desktop robot arm",
-    line: "Four axes, printed and bolted. Every printed joint is a machine screw into a brass heat-set insert. 62 fasteners, none in bare plastic.",
-    specs: [["Axes", "4 + gripper"], ["Reach", "241 mm"], ["Fasteners", "62"]],
+    line: "Four axes, printed and bolted. A servo drives each joint from one side, an M8 bolt turns in a 608 bearing on the other. 36 brass inserts, so it comes apart and goes back together.",
+    specs: [["Axes", "4 + gripper"], ["Reach", "276 mm"], ["Bearings", "3 × 608"]],
     href: null,
   },
 ];
@@ -554,6 +585,8 @@ function buildSceneA(meta, buf, envTex) {
     steel: new THREE.MeshStandardMaterial({ color: 0xc8cdd3, metalness: 1, roughness: 0.27 }),
     yolk: rimify(new THREE.MeshStandardMaterial({ color: 0xf4a300, roughness: 0.42 }), 0xffd98a, 0.3, 3),
   };
+  // frosted ice wants its crevices soft, not sooty
+  withAO(M.ice, 0.7); withAO(M.steel, 0.8); withAO(M.yolk, 0.8);
   const matFor = (n) => {
     if (n.startsWith("crank_knob") || n.startsWith("flip_flop_gate")) return M.yolk;
     if (/^(screws|nuts|inserts|bearing|shaft_collar|flywheel_weights|chime_bar)/.test(n) || /_shaft$/.test(n)) return M.steel;
@@ -727,6 +760,7 @@ function productMaterial(kind, hex) {
     default: m = new THREE.MeshPhysicalMaterial({ color, roughness: 0.48, clearcoat: 0.15, clearcoatRoughness: 0.5 });
   }
   if (!("glow" === kind)) m.envMapIntensity = kind.startsWith("glass") ? 1.8 : 0.85;
+  if (kind !== "glow") withAO(m, kind.startsWith("glass") ? 0.5 : 1.0);
   matCache.set(key, m);
   return m;
 }
@@ -1397,7 +1431,8 @@ let chapter = -1;
 let hoverWas = false;
 
 function resize() {
-  view.w = innerWidth; view.h = innerHeight;
+  // a hidden or collapsed frame reports 0 x 0, which would turn the scroll into NaN
+  view.w = Math.max(innerWidth, 1); view.h = Math.max(innerHeight, 1);
   view.pr = Math.min(devicePixelRatio || 1, 1.75);
   view.aspect = view.w / view.h;
   view.narrow = view.w < 860;

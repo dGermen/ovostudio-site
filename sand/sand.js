@@ -244,20 +244,29 @@ const view = { w: 1, h: 1, pr: 1, aspect: 1, narrow: false };
 function partTriangles(buf, p) {
   return {
     pos: new Int16Array(buf, p.vertex_at, p.vertices * 5),
+    occ: new Uint8Array(buf, p.vertex_at, p.vertices * 10),   // byte 9 of each vertex: baked AO
     idx: new Uint16Array(buf, p.index_at, p.triangles * 3),
     org: p.org, scale: p.scale,
   };
 }
 
-// Area-weighted surface samples with face normals and an accent flag. Rhino is
-// Z-up; (x, y, z) -> (x, z, -y) stands everything up.
+// Share of grains that trace the sharp edges instead of covering the faces.
+// The web meshes split their vertices at every crease over 32 degrees, so an
+// edge used by only one triangle IS a feature edge: the outline a designer
+// would draw. A few grains there make a sculpture read as a form, not a haze.
+const EDGE_FRAC = 0.16;
+
+// Area-weighted surface samples plus length-weighted edge samples, each with a
+// face normal, baked AO and an accent flag. Rhino is Z-up; (x, y, z) -> (x, z, -y).
 function sampleAssembly(parts, n) {
   let triCount = 0;
   for (const p of parts) triCount += p.idx.length / 3;
   const cum = new Float64Array(triCount);
   const owner = new Uint32Array(triCount);
   const worlds = [];
-  let total = 0, k = 0;
+  const edges = [];              // [part, vertex a, vertex b, triangle]
+  const edgeCum = [];
+  let total = 0, edgeTotal = 0, k = 0;
   parts.forEach((p, pi) => {
     const nv = p.pos.length / 5;
     const w = new Float32Array(nv * 3);
@@ -269,40 +278,78 @@ function sampleAssembly(parts, n) {
     }
     worlds.push(w);
     const idx = p.idx;
+    const occ = (i) => p.occ[i * 10 + 9] / 255;
+    const seen = new Map();      // edge key -> first triangle that used it, or -1 once shared
     for (let t = 0; t < idx.length; t += 3) {
       const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
       const ux = w[b] - w[a], uy = w[b + 1] - w[a + 1], uz = w[b + 2] - w[a + 2];
       const vx = w[c] - w[a], vy = w[c + 1] - w[a + 1], vz = w[c + 2] - w[a + 2];
       const cx = uy * vz - uz * vy, cy = uz * vx - ux * vz, cz = ux * vy - uy * vx;
-      total += Math.sqrt(cx * cx + cy * cy + cz * cz) * 0.5;
+      // grains go where they can be seen: an enclosed face (a driver inside the
+      // housing, a bolt inside its knuckle) gets a sixth of its share
+      const open = (occ(idx[t]) + occ(idx[t + 1]) + occ(idx[t + 2])) / 3;
+      total += Math.sqrt(cx * cx + cy * cy + cz * cz) * 0.5 * (0.16 + 0.84 * open);
       cum[k] = total; owner[k] = pi; k++;
+      for (let e = 0; e < 3; e++) {
+        const i0 = idx[t + e], i1 = idx[t + (e + 1) % 3];
+        const key = i0 < i1 ? i0 * 65536 + i1 : i1 * 65536 + i0;
+        seen.set(key, seen.has(key) ? -1 : t);
+      }
+    }
+    for (const [key, t] of seen) {
+      if (t < 0) continue;
+      const i0 = Math.floor(key / 65536), i1 = key % 65536;
+      const len = Math.hypot(w[i1 * 3] - w[i0 * 3], w[i1 * 3 + 1] - w[i0 * 3 + 1], w[i1 * 3 + 2] - w[i0 * 3 + 2])
+        * (0.08 + 0.92 * (occ(i0) + occ(i1)) / 2);
+      if (len <= 0) continue;
+      edgeTotal += len;
+      edges.push(pi, i0, i1, t);
+      edgeCum.push(edgeTotal);
     }
   });
-  // triangle k -> its part and local index, via running offsets
   const firstTri = []; let off = 0;
   for (const p of parts) { firstTri.push(off); off += p.idx.length / 3; }
 
-  const pos = new Float32Array(n * 3), nor = new Float32Array(n * 3), acc = new Float32Array(n);
-  for (let s = 0; s < n; s++) {
-    const x = Math.random() * total;
-    let lo = 0, hi = triCount - 1;
-    while (lo < hi) { const m = (lo + hi) >> 1; if (cum[m] < x) lo = m + 1; else hi = m; }
-    const pi = owner[lo], p = parts[pi], w = worlds[pi];
-    const t = (lo - firstTri[pi]) * 3;
-    const a = p.idx[t] * 3, b = p.idx[t + 1] * 3, c = p.idx[t + 2] * 3;
-    let u = Math.random(), v = Math.random();
-    if (u + v > 1) { u = 1 - u; v = 1 - v; }
+  const pos = new Float32Array(n * 3), nor = new Float32Array(n * 3);
+  const acc = new Float32Array(n), ao = new Float32Array(n), edge = new Float32Array(n);
+  const aoOf = (p, i) => p.occ[i * 10 + 9] / 255;
+  const faceNormal = (w, a, b, c, s) => {
     const ux = w[b] - w[a], uy = w[b + 1] - w[a + 1], uz = w[b + 2] - w[a + 2];
     const vx = w[c] - w[a], vy = w[c + 1] - w[a + 1], vz = w[c + 2] - w[a + 2];
-    pos[s * 3] = w[a] + ux * u + vx * v;
-    pos[s * 3 + 1] = w[a + 1] + uy * u + vy * v;
-    pos[s * 3 + 2] = w[a + 2] + uz * u + vz * v;
-    let cx = uy * vz - uz * vy, cy = uz * vx - ux * vz, cz = ux * vy - uy * vx;
+    const cx = uy * vz - uz * vy, cy = uz * vx - ux * vz, cz = ux * vy - uy * vx;
     const l = Math.hypot(cx, cy, cz) || 1;
     nor[s * 3] = cx / l; nor[s * 3 + 1] = cy / l; nor[s * 3 + 2] = cz / l;
-    acc[s] = p.accent ? 1 : 0;
+  };
+  const nEdge = edges.length ? Math.round(n * EDGE_FRAC) : 0;
+  for (let s = 0; s < n; s++) {
+    if (s < n - nEdge) {
+      const x = Math.random() * total;
+      let lo = 0, hi = triCount - 1;
+      while (lo < hi) { const m = (lo + hi) >> 1; if (cum[m] < x) lo = m + 1; else hi = m; }
+      const pi = owner[lo], p = parts[pi], w = worlds[pi];
+      const t = (lo - firstTri[pi]) * 3;
+      const ia = p.idx[t], ib = p.idx[t + 1], ic = p.idx[t + 2];
+      const a = ia * 3, b = ib * 3, c = ic * 3;
+      let u = Math.random(), v = Math.random();
+      if (u + v > 1) { u = 1 - u; v = 1 - v; }
+      for (let d = 0; d < 3; d++) pos[s * 3 + d] = w[a + d] + (w[b + d] - w[a + d]) * u + (w[c + d] - w[a + d]) * v;
+      faceNormal(w, a, b, c, s);
+      ao[s] = aoOf(p, ia) * (1 - u - v) + aoOf(p, ib) * u + aoOf(p, ic) * v;
+      acc[s] = p.accent ? 1 : 0;
+    } else {
+      const x = Math.random() * edgeTotal;
+      let lo = 0, hi = edgeCum.length - 1;
+      while (lo < hi) { const m = (lo + hi) >> 1; if (edgeCum[m] < x) lo = m + 1; else hi = m; }
+      const pi = edges[lo * 4], i0 = edges[lo * 4 + 1], i1 = edges[lo * 4 + 2], t = edges[lo * 4 + 3];
+      const p = parts[pi], w = worlds[pi], f = Math.random();
+      for (let d = 0; d < 3; d++) pos[s * 3 + d] = w[i0 * 3 + d] + (w[i1 * 3 + d] - w[i0 * 3 + d]) * f;
+      faceNormal(w, p.idx[t] * 3, p.idx[t + 1] * 3, p.idx[t + 2] * 3, s);
+      ao[s] = aoOf(p, i0) * (1 - f) + aoOf(p, i1) * f;
+      acc[s] = p.accent ? 1 : 0;
+      edge[s] = 1;
+    }
   }
-  return { pos, nor, acc, area: total };
+  return { pos, nor, acc, ao, edge, area: total };
 }
 
 function sampleWordmark(n) {
@@ -319,31 +366,41 @@ function sampleWordmark(n) {
   g.fillStyle = "#f00";
   g.fill(new Path2D("M109 0 L132.85 85.29 A23 23 0 0 0 177.15 85.29 L201 0 L182.31 0 L159.82 80.45 A5 5 0 0 1 150.18 80.45 L127.69 0 Z"));
   const data = g.getImageData(0, 0, W, H).data;
-  const cells = [];
+  const filled = (x, y) => x >= 0 && y >= 0 && x < W && y < H && data[(y * W + x) * 4 + 3] > 140;
+  const cells = [], rims = [];
   for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    if (!filled(x, y)) continue;
     const k = (y * W + x) * 4;
-    if (data[k + 3] > 140) cells.push(x, y, data[k] > data[k + 1] ? 1 : 0);
+    const accent = data[k] > data[k + 1] ? 1 : 0;
+    cells.push(x, y, accent);
+    // a filled pixel with an empty neighbour is on the outline
+    if (!filled(x - 1, y) || !filled(x + 1, y) || !filled(x, y - 1) || !filled(x, y + 1)) rims.push(x, y, accent);
   }
-  const count = cells.length / 3;
-  const pos = new Float32Array(n * 3), nor = new Float32Array(n * 3), acc = new Float32Array(n);
-  const depth = 14;                     // mark units, front to back
+  const count = cells.length / 3, rimCount = rims.length / 3;
+  const pos = new Float32Array(n * 3), nor = new Float32Array(n * 3);
+  const acc = new Float32Array(n), ao = new Float32Array(n).fill(1), edge = new Float32Array(n);
+  const depth = 14;                      // mark units, front to back
+  const nEdge = Math.round(n * EDGE_FRAC);
   for (let i = 0; i < n; i++) {
-    const j = Math.floor(Math.random() * count) * 3;
-    const front = Math.random() < 0.62;  // the camera mostly sees the front
-    pos[i * 3] = (cells[j] + Math.random() - 10) / S - 155;
-    pos[i * 3 + 1] = 104 - ((cells[j + 1] + Math.random() - 16) / S);
+    const onRim = i >= n - nEdge;
+    const src = onRim ? rims : cells;
+    const j = Math.floor(Math.random() * (onRim ? rimCount : count)) * 3;
+    const front = onRim || Math.random() < 0.62;   // the camera mostly sees the front
+    pos[i * 3] = (src[j] + Math.random() - 10) / S - 155;
+    pos[i * 3 + 1] = 104 - ((src[j + 1] + Math.random() - 16) / S);
     pos[i * 3 + 2] = (front ? 0.5 : -0.5) * depth + (Math.random() - 0.5) * 1.5;
     nor[i * 3 + 2] = front ? 1 : -1;
-    acc[i] = cells[j + 2];
+    acc[i] = src[j + 2];
+    edge[i] = onRim ? 1 : 0;
   }
   // area of both faces, in mark units
   const area = (count / (S * S)) * 2;
-  return { pos, nor, acc, area };
+  return { pos, nor, acc, ao, edge, area };
 }
 
 // normalise, set it on the ground, and give every grain its two thresholds
 function finishShape(sample, size, erodeSeed) {
-  const { pos, nor, acc } = sample;
+  const { pos, nor, acc, ao, edge } = sample;
   const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
   for (let i = 0; i < N; i++) for (let d = 0; d < 3; d++) {
     const v = pos[i * 3 + d];
@@ -365,7 +422,11 @@ function finishShape(sample, size, erodeSeed) {
     const rE = clamp01(0.62 * xn + 0.16 * (1 - yn) + 0.22 * (0.5 + 0.5 * noise(x * 3.1 + erodeSeed, y * 3.1, z * 3.1)));
     target[i * 4] = x; target[i * 4 + 1] = y; target[i * 4 + 2] = z; target[i * 4 + 3] = rF;
     meta[i * 4] = nor[i * 3]; meta[i * 4 + 1] = nor[i * 3 + 1]; meta[i * 4 + 2] = nor[i * 3 + 2];
-    meta[i * 4 + 3] = Math.min(rE, 0.999) + 2 * acc[i];
+    // meta.w packs four things: rErode in [0,1), +2 yolk grain, +4 edge grain,
+    // +8 x AO quantised to 0..31. Every flag is a multiple of 2, so the
+    // simulation can still read rErode as mod(w, 2).
+    const aoq = Math.round(clamp01(ao[i]) * 31);
+    meta[i * 4 + 3] = Math.min(rE, 0.999) + 2 * acc[i] + 4 * edge[i] + 8 * aoq;
   }
   const tex = (arr) => {
     const t = new THREE.DataTexture(arr, SIDE, SIDE, THREE.RGBAFormat, THREE.FloatType);
@@ -537,13 +598,21 @@ void main(){
   vec4 M = texture2D(tMeta, ref);
   vec3 p = P.xyz;
   float bound = clamp(V.w, 0.0, 1.0);
-  float accent = step(1.5, M.w) * bound;
+  // meta.w: rErode + 2 yolk + 4 edge + 8 * AO(0..31)
+  float occ = floor(M.w / 8.0) / 31.0;
+  float flags = mod(M.w, 8.0);
+  float edge = step(3.99, flags) * bound;
+  float accent = step(1.99, mod(flags, 4.0)) * bound;
   vec3 n = normalize(mix(vec3(0.0, 1.0, 0.0), M.xyz, bound));
   vec3 toCam = normalize(cameraPosition - p);
   float nl = dot(n, uLight);
   float lit = 0.2 + 0.95 * max(nl, 0.0) + 0.15 * (nl * 0.5 + 0.5);
-  // grains on the far side of a sculpture dim, so it reads as a solid, not an x-ray
-  lit *= mix(1.0, mix(0.28, 1.0, smoothstep(-0.25, 0.3, dot(n, toCam))), bound);
+  // crevices and contacts go dark, as they do on the real part
+  lit *= mix(1.0, 0.08 + 0.92 * smoothstep(0.0, 0.85, occ), bound);
+  // grains on the far side of a sculpture dim hard, so it reads as a solid, not an x-ray
+  lit *= mix(1.0, mix(0.14, 1.0, smoothstep(-0.2, 0.3, dot(n, toCam))), bound);
+  // the drawn edges carry the form
+  lit *= 1.0 + edge * 0.6 * smoothstep(0.2, 0.8, occ);
   float speed = length(V.xyz);
   float hot = smoothstep(0.6, 3.5, speed);
   // a heap is thousands of grains stacked on one spot: resting grains dim, or it burns out
@@ -554,7 +623,7 @@ void main(){
   vCol = c * uGain * 0.5;
   vec4 mv = viewMatrix * vec4(p, 1.0);
   gl_Position = projectionMatrix * mv;
-  gl_PointSize = uSize * uPR * (0.7 + seed * 0.6) * (1.0 + hot * 0.5) / max(-mv.z, 0.1);
+  gl_PointSize = uSize * uPR * (0.7 + seed * 0.6) * (1.0 + hot * 0.5) * (1.0 - edge * 0.15) / max(-mv.z, 0.1);
 }`;
 
 const FLOOR_VERT = /* glsl */ `
@@ -729,7 +798,8 @@ const ray = new THREE.Raycaster();
 const camTarget = new THREE.Vector3();
 
 function resize() {
-  view.w = innerWidth; view.h = innerHeight;
+  // a hidden or collapsed frame reports 0 x 0, which would turn the scroll into NaN
+  view.w = Math.max(innerWidth, 1); view.h = Math.max(innerHeight, 1);
   view.pr = Math.min(devicePixelRatio || 1, 2);
   view.aspect = view.w / view.h;
   view.narrow = view.w < 860;

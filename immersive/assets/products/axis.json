@@ -3,463 +3,737 @@
 "units": "mm",
 "up": "z",
 "stride": 10,
-"format": "pos3i16 (org+scale) + normal3i8 + pad, then u16 triangles",
+"format": "pos3i16 (org+scale) + normal3i8 + ao u8 (255 open), then u16 triangles",
 "bbox": [
 [
--79.999,
--80.0,
--6.0
+-95.09,
+-88.0,
+-3.0
 ],
 [
-327.396,
-83.0,
-256.939
+276.504,
+92.497,
+280.423
 ]
 ],
-"triangles": 29978,
-"source_triangles": 331420,
-"bytes": 431628,
+"triangles": 55928,
+"vertices": 44800,
+"source_triangles": 800706,
+"bytes": 783568,
 "parts": [
 {
 "name": "base_plate",
 "mat": "fdm",
 "color": "#36383C",
 "vertex_at": 0,
-"vertices": 1336,
-"index_at": 13360,
-"triangles": 1332,
+"vertices": 1338,
+"index_at": 13380,
+"triangles": 1346,
 "org": [
+-0.0076,
 0.0,
-0.0,
-12.5
+15.25
 ],
-"scale": 0.002305502115463204,
+"scale": 0.002556968980244868,
 "explode": [
 0.0,
 0.0,
--150.0
+-170.0
 ],
-"source_triangles": 12956
+"source_triangles": 12444
 },
 {
 "name": "base_shell",
 "mat": "fdm",
 "color": "#80848A",
-"vertex_at": 21352,
-"vertices": 2276,
-"index_at": 44112,
-"triangles": 3220,
+"vertex_at": 21456,
+"vertices": 2565,
+"index_at": 47106,
+"triangles": 3466,
 "org": [
--0.0008,
--0.0009,
-23.0
+-1.0009,
+0.0,
+24.0
 ],
-"scale": 0.002441466322139319,
+"scale": 0.00271612079986033,
 "explode": [
 0.0,
 0.0,
--90.0
+-110.0
 ],
-"source_triangles": 44806
+"source_triangles": 42084
 },
 {
-"name": "bearing_608",
+"name": "bearings_608",
 "mat": "steel",
 "color": "#B0B2B6",
-"vertex_at": 63432,
-"vertices": 402,
-"index_at": 67452,
-"triangles": 402,
+"vertex_at": 67902,
+"vertices": 718,
+"index_at": 75082,
+"triangles": 718,
 "org": [
-0.0005,
-0.0002,
-43.5
+100.6231,
+-45.5,
+184.9666
 ],
-"scale": 0.0003357433758340211,
+"scale": 0.0034069897807120666,
 "explode": [
 0.0,
-0.0,
-60.0
+-70.0,
+0.0
 ],
-"source_triangles": 1184
+"source_triangles": 3552
 },
 {
-"name": "elbow_spacer",
-"mat": "fdm",
-"color": "#36383C",
-"vertex_at": 69864,
-"vertices": 838,
-"index_at": 78244,
-"triangles": 940,
+"name": "bolts_m8",
+"mat": "steel",
+"color": "#9EA2A7",
+"vertex_at": 79390,
+"vertices": 920,
+"index_at": 88590,
+"triangles": 908,
 "org": [
-95.0628,
-0.0,
-236.9364
+100.6241,
+-36.75,
+184.9701
 ],
-"scale": 0.0006714072084719382,
+"scale": 0.003269861443498899,
 "explode": [
 0.0,
-120.0,
-60.0
+-110.0,
+0.0
 ],
-"source_triangles": 6460
+"source_triangles": 5668
+},
+{
+"name": "cables",
+"mat": "rubber",
+"color": "#141416",
+"vertex_at": 94038,
+"vertices": 4674,
+"index_at": 140778,
+"triangles": 8914,
+"org": [
+99.8135,
+44.0091,
+158.7116
+],
+"scale": 0.004266996875827785,
+"explode": [
+-0.0,
+60.0,
+0.0
+],
+"source_triangles": 378736
+},
+{
+"name": "cheek_left",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 194262,
+"vertices": 1396,
+"index_at": 208222,
+"triangles": 2236,
+"org": [
+0.0001,
+-55.0008,
+100.4981
+],
+"scale": 0.0013274974766534892,
+"explode": [
+0.0,
+-90.0,
+30.0
+],
+"source_triangles": 15266
+},
+{
+"name": "cheek_right",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 221638,
+"vertices": 1488,
+"index_at": 236518,
+"triangles": 2284,
+"org": [
+-0.0003,
+55.0011,
+100.4981
+],
+"scale": 0.0013274974766534892,
+"explode": [
+0.0,
+90.0,
+30.0
+],
+"source_triangles": 15918
+},
+{
+"name": "dc_jack",
+"mat": "steel",
+"color": "#B0B2B6",
+"vertex_at": 250222,
+"vertices": 456,
+"index_at": 254782,
+"triangles": 452,
+"org": [
+-84.5,
+12.9966,
+22.0021
+],
+"scale": 0.00025940733054597613,
+"explode": [
+-60.0,
+0.0,
+0.0
+],
+"source_triangles": 1412
+},
+{
+"name": "feet",
+"mat": "rubber",
+"color": "#1C1C1E",
+"vertex_at": 257494,
+"vertices": 398,
+"index_at": 261474,
+"triangles": 382,
+"org": [
+0.0,
+0.0,
+-1.5
+],
+"scale": 0.0015522200736658403,
+"explode": [
+0.0,
+0.0,
+-200.0
+],
+"source_triangles": 1008
 },
 {
 "name": "forearm_left",
 "mat": "fdm",
 "color": "#80848A",
-"vertex_at": 83884,
-"vertices": 1359,
-"index_at": 97474,
-"triangles": 1456,
+"vertex_at": 263766,
+"vertices": 1605,
+"index_at": 279816,
+"triangles": 2410,
 "org": [
-167.8359,
--29.8,
-218.7912
-],
-"scale": 0.0028312959716714917,
-"explode": [
-145.54,
+133.3266,
 -30.0,
--36.29
+239.7846
 ],
-"source_triangles": 10752
+"scale": 0.002805478689191572,
+"explode": [
+88.63,
+-40.0,
+-15.63
+],
+"source_triangles": 17728
 },
 {
 "name": "forearm_right",
 "mat": "fdm",
 "color": "#80848A",
-"vertex_at": 106210,
-"vertices": 1357,
-"index_at": 119780,
-"triangles": 1456,
+"vertex_at": 294276,
+"vertices": 1813,
+"index_at": 312406,
+"triangles": 2560,
 "org": [
-167.8359,
-29.8,
-218.7912
-],
-"scale": 0.0028312959716714917,
-"explode": [
-145.54,
+133.3266,
 30.0,
--36.29
+239.7901
 ],
-"source_triangles": 10752
+"scale": 0.002805478689191572,
+"explode": [
+88.63,
+40.0,
+-15.63
+],
+"source_triangles": 19994
 },
 {
-"name": "gripper_base",
+"name": "gripper_cover",
 "mat": "fdm",
-"color": "#80848A",
-"vertex_at": 128516,
-"vertices": 895,
-"index_at": 137466,
-"triangles": 1240,
+"color": "#36383C",
+"vertex_at": 327766,
+"vertices": 827,
+"index_at": 336036,
+"triangles": 1176,
 "org": [
-261.4055,
-0.0007,
-165.0285
+220.7455,
+-0.0005,
+180.422
 ],
-"scale": 0.000929318323640925,
+"scale": 0.0008579265443021466,
 "explode": [
-75.0,
+71.18,
 0.0,
--129.9
+-176.16
 ],
-"source_triangles": 11236
+"source_triangles": 9516
 },
 {
 "name": "inserts_m3",
 "mat": "brass",
 "color": "#C4A052",
-"vertex_at": 144906,
-"vertices": 2150,
-"index_at": 166406,
-"triangles": 1688,
+"vertex_at": 343092,
+"vertices": 2080,
+"index_at": 363892,
+"triangles": 1228,
 "org": [
-122.2356,
-6.5625,
-124.3498
+93.5815,
+3.1039,
+141.8052
 ],
-"scale": 0.005333260526210929,
+"scale": 0.004657963006414282,
 "explode": [
 -0.0,
 -150.0,
 90.0
 ],
-"source_triangles": 20800
+"source_triangles": 28800
 },
 {
 "name": "jaw_left",
 "mat": "fdm",
 "color": "#F4A300",
-"vertex_at": 176534,
-"vertices": 736,
-"index_at": 183894,
-"triangles": 1308,
+"vertex_at": 371260,
+"vertices": 589,
+"index_at": 377150,
+"triangles": 520,
 "org": [
-308.9282,
+242.3967,
 0.0,
-122.313
+171.7387
 ],
-"scale": 0.0007869897299254967,
+"scale": 0.0010409044179655312,
 "explode": [
-105.0,
+1.21,
 0.0,
--181.87
+-101.99
 ],
-"source_triangles": 12478
+"source_triangles": 828
 },
 {
 "name": "jaw_right",
 "mat": "fdm",
 "color": "#F4A300",
-"vertex_at": 191742,
-"vertices": 773,
-"index_at": 199472,
-"triangles": 1384,
+"vertex_at": 380270,
+"vertices": 588,
+"index_at": 386150,
+"triangles": 520,
 "org": [
-274.2909,
-0.0004,
-102.3121
-],
-"scale": 0.0007870165062666659,
-"explode": [
-125.0,
+205.7045,
 0.0,
--216.51
+153.3829
 ],
-"source_triangles": 13996
+"scale": 0.0011800312597903618,
+"explode": [
+81.21,
+0.0,
+-101.99
+],
+"source_triangles": 828
 },
 {
-"name": "nuts_m3",
+"name": "joint_spacers",
+"mat": "fdm",
+"color": "#36383C",
+"vertex_at": 389270,
+"vertices": 636,
+"index_at": 395630,
+"triangles": 636,
+"org": [
+100.6336,
+-38.0,
+184.968
+],
+"scale": 0.0032543187597343873,
+"explode": [
+0.0,
+-45.0,
+0.0
+],
+"source_triangles": 2790
+},
+{
+"name": "link_spacers_fore",
+"mat": "fdm",
+"color": "#36383C",
+"vertex_at": 399446,
+"vertices": 1441,
+"index_at": 413856,
+"triangles": 1454,
+"org": [
+129.8673,
+0.0,
+241.225
+],
+"scale": 0.0008593019168872503,
+"explode": [
+88.63,
+0.0,
+24.37
+],
+"source_triangles": 14520
+},
+{
+"name": "link_spacers_upper",
+"mat": "fdm",
+"color": "#36383C",
+"vertex_at": 422580,
+"vertices": 1570,
+"index_at": 438280,
+"triangles": 1910,
+"org": [
+32.33,
+0.0,
+186.3325
+],
+"scale": 0.001281777397991882,
+"explode": [
+25.36,
+0.0,
+94.38
+],
+"source_triangles": 25030
+},
+{
+"name": "nuts_m8",
 "mat": "steel",
 "color": "#B0B2B6",
-"vertex_at": 207776,
-"vertices": 524,
-"index_at": 213016,
-"triangles": 464,
+"vertex_at": 449740,
+"vertices": 514,
+"index_at": 454880,
+"triangles": 478,
 "org": [
-148.6618,
-31.25,
-166.4682
+100.6329,
+-23.0,
+184.973
 ],
-"scale": 0.004624039488606819,
+"scale": 0.003269536314686723,
+"explode": [
+0.0,
+60.0,
+0.0
+],
+"source_triangles": 1586
+},
+{
+"name": "pads",
+"mat": "rubber",
+"color": "#1C1C1E",
+"vertex_at": 457748,
+"vertices": 673,
+"index_at": 464478,
+"triangles": 1338,
+"org": [
+235.7296,
+0.0001,
+143.3337
+],
+"scale": 0.0010563103604855875,
+"explode": [
+52.44,
+0.0,
+-129.81
+],
+"source_triangles": 12308
+},
+{
+"name": "pinion",
+"mat": "fdm",
+"color": "#36383C",
+"vertex_at": 472506,
+"vertices": 960,
+"index_at": 482106,
+"triangles": 832,
+"org": [
+218.685,
+0.0,
+185.5215
+],
+"scale": 0.0002889362795874565,
+"explode": [
+56.19,
+0.0,
+-139.08
+],
+"source_triangles": 2434
+},
+{
+"name": "screws_m2",
+"mat": "steel",
+"color": "#B0B2B6",
+"vertex_at": 487098,
+"vertices": 1400,
+"index_at": 501098,
+"triangles": 906,
+"org": [
+112.3397,
+21.932,
+153.6718
+],
+"scale": 0.003732245605880407,
 "explode": [
 -0.0,
--210.0,
+150.0,
 150.0
 ],
-"source_triangles": 1580
+"source_triangles": 11538
 },
 {
 "name": "screws_m3",
 "mat": "steel",
 "color": "#B0B2B6",
-"vertex_at": 215800,
-"vertices": 2696,
-"index_at": 242760,
-"triangles": 2184,
+"vertex_at": 506534,
+"vertices": 2466,
+"index_at": 531194,
+"triangles": 1406,
 "org": [
-123.6207,
-9.8801,
-116.9735
+94.6423,
+5.7656,
+134.181
 ],
-"scale": 0.005397519204681086,
+"scale": 0.004718498842110912,
 "explode": [
 0.0,
 -150.0,
 150.0
 ],
-"source_triangles": 34820
+"source_triangles": 27692
 },
 {
 "name": "servo_base",
 "mat": "abs",
 "color": "#1E2026",
-"vertex_at": 255864,
-"vertices": 828,
-"index_at": 264144,
-"triangles": 1122,
+"vertex_at": 539630,
+"vertices": 1291,
+"index_at": 552540,
+"triangles": 1654,
 "org": [
--10.3506,
+-10.1508,
 0.0,
-26.0028
+27.7518
 ],
-"scale": 0.0008344870300227774,
+"scale": 0.0008314825499152724,
 "explode": [
 0.0,
 0.0,
--40.0
+-60.0
 ],
-"source_triangles": 14352
+"source_triangles": 15522
 },
 {
 "name": "servo_elbow",
 "mat": "abs",
 "color": "#1E2026",
-"vertex_at": 270876,
-"vertices": 813,
-"index_at": 279006,
-"triangles": 1118,
+"vertex_at": 562464,
+"vertices": 1304,
+"index_at": 575504,
+"triangles": 1678,
 "org": [
-82.7652,
-60.5025,
-218.6955
+59.1061,
+55.25,
+243.7441
 ],
-"scale": 0.0008507037426906084,
+"scale": 0.0008727438729919775,
 "explode": [
-0.0,
-170.0,
+-0.0,
+150.0,
 0.0
 ],
-"source_triangles": 14240
+"source_triangles": 15972
 },
 {
 "name": "servo_gripper",
 "mat": "abs",
 "color": "#1E2026",
-"vertex_at": 285714,
-"vertices": 682,
-"index_at": 292534,
-"triangles": 1074,
+"vertex_at": 585572,
+"vertices": 950,
+"index_at": 595072,
+"triangles": 1430,
 "org": [
-271.1005,
--20.0009,
-147.8162
+218.3323,
+0.0006,
+201.5244
 ],
-"scale": 0.000864224339745161,
+"scale": 0.0005010393616350386,
 "explode": [
-100.0,
+11.24,
 0.0,
--173.21
+-77.82
 ],
-"source_triangles": 13168
+"source_triangles": 11608
 },
 {
 "name": "servo_shoulder",
 "mat": "abs",
 "color": "#1E2026",
-"vertex_at": 298978,
-"vertices": 810,
-"index_at": 307078,
-"triangles": 1112,
+"vertex_at": 603652,
+"vertices": 1289,
+"index_at": 616542,
+"triangles": 1654,
 "org": [
--0.0015,
-60.5036,
-76.0108
+0.0,
+71.2484,
+106.8508
 ],
-"scale": 0.0008344972748837465,
+"scale": 0.0008315398571063184,
 "explode": [
 0.0,
-150.0,
-0.0
+170.0,
+-0.0
 ],
-"source_triangles": 14096
+"source_triangles": 15522
 },
 {
-"name": "shoulder_yoke",
-"mat": "fdm",
-"color": "#80848A",
-"vertex_at": 313750,
-"vertices": 1257,
-"index_at": 326320,
-"triangles": 2122,
+"name": "servo_wrist",
+"mat": "abs",
+"color": "#1E2026",
+"vertex_at": 626466,
+"vertices": 1294,
+"index_at": 639406,
+"triangles": 1662,
 "org": [
--0.0,
--0.0009,
-95.9985
+191.2698,
+39.248,
+230.398
 ],
-"scale": 0.0014647911286686586,
+"scale": 0.0008674037392118261,
+"explode": [
+-0.0,
+120.0,
+0.0
+],
+"source_triangles": 15668
+},
+{
+"name": "slew_ring",
+"mat": "steel",
+"color": "#A8ABB0",
+"vertex_at": 649378,
+"vertices": 630,
+"index_at": 655678,
+"triangles": 630,
+"org": [
+-0.0005,
+0.0022,
+49.0
+],
+"scale": 0.0014652285143807152,
 "explode": [
 0.0,
 0.0,
-190.0
+40.0
 ],
-"source_triangles": 32844
+"source_triangles": 2730
+},
+{
+"name": "switch",
+"mat": "abs",
+"color": "#1E2026",
+"vertex_at": 659458,
+"vertices": 78,
+"index_at": 660238,
+"triangles": 48,
+"org": [
+-88.045,
+-13.0,
+22.0
+],
+"scale": 0.00034180731486258415,
+"explode": [
+-60.0,
+-0.0,
+-0.0
+],
+"source_triangles": 48
 },
 {
 "name": "turntable",
 "mat": "fdm",
 "color": "#80848A",
-"vertex_at": 339052,
-"vertices": 1244,
-"index_at": 351492,
-"triangles": 1536,
+"vertex_at": 660526,
+"vertices": 1390,
+"index_at": 674426,
+"triangles": 1768,
 "org": [
-0.0056,
+0.0243,
 0.0,
-58.0
+53.0
 ],
-"scale": 0.0014652768282136944,
+"scale": 0.002289018017745023,
 "explode": [
 0.0,
 0.0,
-120.0
+60.0
 ],
-"source_triangles": 17206
+"source_triangles": 14900
 },
 {
 "name": "upper_arm_left",
 "mat": "fdm",
 "color": "#80848A",
-"vertex_at": 360708,
-"vertices": 1666,
-"index_at": 377368,
-"triangles": 1784,
+"vertex_at": 685034,
+"vertices": 1621,
+"index_at": 701244,
+"triangles": 2452,
 "org": [
-47.5318,
--24.5,
-166.4682
+32.6952,
+-46.0,
+185.9747
 ],
-"scale": 0.002761045795817522,
+"scale": 0.0028371831577436186,
 "explode": [
-50.33,
--30.0,
-74.61
+25.36,
+-50.0,
+54.38
 ],
-"source_triangles": 16128
+"source_triangles": 18334
 },
 {
 "name": "upper_arm_right",
 "mat": "fdm",
 "color": "#80848A",
-"vertex_at": 388072,
-"vertices": 1670,
-"index_at": 404772,
-"triangles": 1784,
+"vertex_at": 715956,
+"vertices": 1819,
+"index_at": 734146,
+"triangles": 2598,
 "org": [
-47.5318,
-24.5,
-166.4682
+32.6952,
+46.0,
+185.9747
 ],
-"scale": 0.002761045795817522,
+"scale": 0.0028371831577436186,
 "explode": [
-50.33,
-30.0,
-74.61
+25.36,
+50.0,
+54.38
 ],
-"source_triangles": 16128
+"source_triangles": 20602
 },
 {
 "name": "wrist_bracket",
 "mat": "fdm",
 "color": "#80848A",
-"vertex_at": 415476,
-"vertices": 864,
-"index_at": 424116,
-"triangles": 1252,
+"vertex_at": 749734,
+"vertices": 2019,
+"index_at": 769924,
+"triangles": 2274,
 "org": [
-240.6089,
+216.0837,
 0.0,
-200.6423
+207.8356
 ],
-"scale": 0.0008240623601017667,
+"scale": 0.0011229713424341277,
 "explode": [
-106.73,
+22.48,
 0.0,
--26.61
+-55.63
 ],
-"source_triangles": 11438
+"source_triangles": 18120
 }
 ]
 }

@@ -3,37 +3,38 @@
 "units": "mm",
 "up": "z",
 "stride": 10,
-"format": "pos3i16 (org+scale) + normal3i8 + pad, then u16 triangles",
+"format": "pos3i16 (org+scale) + normal3i8 + ao u8 (255 open), then u16 triangles",
 "bbox": [
 [
--182.988,
--43.996,
+-182.989,
+-44.0,
 0.0
 ],
 [
-166.996,
-52.987,
-200.989
+166.999,
+52.988,
+200.998
 ]
 ],
-"triangles": 27987,
+"triangles": 47987,
+"vertices": 29608,
 "source_triangles": 480900,
-"bytes": 347342,
+"bytes": 584002,
 "parts": [
 {
 "name": "jar_body",
 "mat": "glass",
 "color": "#E6EAE8",
 "vertex_at": 0,
-"vertices": 1391,
-"index_at": 13910,
-"triangles": 2678,
+"vertices": 2286,
+"index_at": 22860,
+"triangles": 4440,
 "org": [
--151.9975,
+-151.9988,
 22.0,
-25.0051
+25.0036
 ],
-"scale": 0.0009154924108114256,
+"scale": 0.0009154850836985024,
 "explode": [
 0.0,
 0.0,
@@ -45,16 +46,16 @@
 "name": "jar_lid",
 "mat": "abs",
 "color": "#1A1B1E",
-"vertex_at": 29978,
-"vertices": 1913,
-"index_at": 49108,
-"triangles": 1983,
+"vertex_at": 49500,
+"vertices": 2698,
+"index_at": 76480,
+"triangles": 3069,
 "org": [
--152.0002,
-21.9996,
-53.9998
+-151.9997,
+21.9984,
+54.0
 ],
-"scale": 0.0009456954760703816,
+"scale": 0.0009457534817746755,
 "explode": [
 -0.0,
 0.0,
@@ -66,16 +67,16 @@
 "name": "mist_bottle",
 "mat": "glass",
 "color": "#E4E9EA",
-"vertex_at": 61006,
-"vertices": 1477,
-"index_at": 75776,
-"triangles": 2902,
+"vertex_at": 94894,
+"vertices": 2442,
+"index_at": 119314,
+"triangles": 4810,
 "org": [
-75.9992,
--21.9995,
-59.0002
+75.9994,
+-22.0001,
+59.0
 ],
-"scale": 0.0018005883917289619,
+"scale": 0.0018005919762890902,
 "explode": [
 0.0,
 0.0,
@@ -87,16 +88,16 @@
 "name": "mist_collar",
 "mat": "aluminium",
 "color": "#BFC2C4",
-"vertex_at": 93188,
-"vertices": 1353,
-"index_at": 106718,
-"triangles": 1640,
+"vertex_at": 148174,
+"vertices": 1983,
+"index_at": 168004,
+"triangles": 2540,
 "org": [
-75.9997,
--22.0087,
-124.5003
+76.0,
+-22.0009,
+124.4999
 ],
-"scale": 0.0004576750480066734,
+"scale": 0.0004579235149898931,
 "explode": [
 -0.0,
 -0.0,
@@ -108,16 +109,16 @@
 "name": "mist_head",
 "mat": "abs",
 "color": "#1A1B1E",
-"vertex_at": 116558,
-"vertices": 861,
-"index_at": 125168,
-"triangles": 1704,
+"vertex_at": 183244,
+"vertices": 1725,
+"index_at": 200494,
+"triangles": 3428,
 "org": [
-75.9997,
--22.0,
-141.4958
+75.9994,
+-21.9987,
+141.4989
 ],
-"scale": 0.0003202669271330054,
+"scale": 0.00032040709545808283,
 "explode": [
 0.0,
 0.0,
@@ -129,16 +130,16 @@
 "name": "pump_bottle",
 "mat": "glass_frosted",
 "color": "#D9D4CC",
-"vertex_at": 135392,
-"vertices": 1552,
-"index_at": 150912,
-"triangles": 3042,
+"vertex_at": 221062,
+"vertices": 2565,
+"index_at": 246712,
+"triangles": 5046,
 "org": [
-0.0008,
-11.9985,
-75.0005
+-0.0002,
+11.9997,
+75.0004
 ],
-"scale": 0.002288896030220533,
+"scale": 0.00228889370184304,
 "explode": [
 0.0,
 0.0,
@@ -150,16 +151,16 @@
 "name": "pump_collar",
 "mat": "aluminium",
 "color": "#BFC2C4",
-"vertex_at": 169164,
-"vertices": 1524,
-"index_at": 184404,
-"triangles": 1758,
+"vertex_at": 276988,
+"vertices": 2173,
+"index_at": 298718,
+"triangles": 2720,
 "org": [
--0.0012,
-11.9989,
-158.0002
+0.0,
+11.998,
+157.9999
 ],
-"scale": 0.0005796807480312432,
+"scale": 0.0005800223792189008,
 "explode": [
 0.0,
 0.0,
@@ -171,16 +172,16 @@
 "name": "pump_head",
 "mat": "abs",
 "color": "#1A1B1E",
-"vertex_at": 194952,
-"vertices": 875,
-"index_at": 203702,
-"triangles": 1724,
+"vertex_at": 315038,
+"vertices": 1747,
+"index_at": 332508,
+"triangles": 3468,
 "org": [
--3.9988,
-11.9973,
-183.4947
+-4.0003,
+12.0001,
+183.4991
 ],
-"scale": 0.0005338920695477491,
+"scale": 0.0005340347990880688,
 "explode": [
 0.0,
 0.0,
@@ -192,16 +193,16 @@
 "name": "serum_bottle",
 "mat": "glass_frosted",
 "color": "#D8DCD9",
-"vertex_at": 214046,
-"vertices": 1443,
-"index_at": 228476,
-"triangles": 2836,
+"vertex_at": 353316,
+"vertices": 2385,
+"index_at": 377166,
+"triangles": 4702,
 "org": [
--71.9995,
--17.9999,
-46.0003
+-72.0,
+-17.9996,
+46.0001
 ],
-"scale": 0.0014038500857728442,
+"scale": 0.00140385451541451,
 "explode": [
 0.0,
 0.0,
@@ -213,16 +214,16 @@
 "name": "serum_cap",
 "mat": "abs",
 "color": "#1A1B1E",
-"vertex_at": 245492,
-"vertices": 1721,
-"index_at": 262702,
-"triangles": 1900,
+"vertex_at": 405378,
+"vertices": 3111,
+"index_at": 436488,
+"triangles": 3822,
 "org": [
--71.9999,
--17.9997,
-102.9999
+-72.0,
+-18.0,
+103.0
 ],
-"scale": 0.0004577755466002142,
+"scale": 0.00045777682720783534,
 "explode": [
 0.0,
 0.0,
@@ -234,16 +235,16 @@
 "name": "serum_pipette",
 "mat": "glass",
 "color": "#E9EDEC",
-"vertex_at": 274102,
-"vertices": 611,
-"index_at": 280212,
-"triangles": 1218,
+"vertex_at": 459420,
+"vertices": 944,
+"index_at": 468860,
+"triangles": 1884,
 "org": [
--71.9998,
--17.9987,
-56.9999
+-72.0,
+-18.0,
+57.0001
 ],
-"scale": 0.0009460545264321586,
+"scale": 0.0009460622100778854,
 "explode": [
 0.0,
 0.0,
@@ -255,16 +256,16 @@
 "name": "tube_body",
 "mat": "abs",
 "color": "#EDE9E1",
-"vertex_at": 287520,
-"vertices": 715,
-"index_at": 294670,
-"triangles": 1426,
+"vertex_at": 480164,
+"vertices": 1105,
+"index_at": 491214,
+"triangles": 2206,
 "org": [
-147.9991,
+147.9985,
 15.9997,
-87.5
+87.5001
 ],
-"scale": 0.001754748925671723,
+"scale": 0.0017547447636969543,
 "explode": [
 0.0,
 0.0,
@@ -276,14 +277,14 @@
 "name": "tube_cap",
 "mat": "abs_gloss",
 "color": "#F4A300",
-"vertex_at": 303226,
-"vertices": 1924,
-"index_at": 322466,
-"triangles": 2016,
+"vertex_at": 504450,
+"vertices": 3544,
+"index_at": 539890,
+"triangles": 4056,
 "org": [
 148.0001,
-15.9999,
-16.8019
+15.9998,
+16.8007
 ],
 "scale": 0.000579354338611446,
 "explode": [
@@ -297,16 +298,16 @@
 "name": "tube_crimp",
 "mat": "aluminium",
 "color": "#C6C8C9",
-"vertex_at": 334562,
-"vertices": 582,
-"index_at": 340382,
-"triangles": 1160,
+"vertex_at": 564226,
+"vertices": 900,
+"index_at": 573226,
+"triangles": 1796,
 "org": [
-147.999,
-16.0,
+148.0015,
+16.0001,
 147.9999
 ],
-"scale": 0.0005796947474009198,
+"scale": 0.0005797706525071909,
 "explode": [
 0.0,
 0.0,
