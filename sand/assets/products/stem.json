@@ -1,0 +1,675 @@
+{
+"id": "stem",
+"units": "mm",
+"up": "z",
+"stride": 10,
+"format": "pos3i16 (org+scale) + normal3i8 + pad, then u16 triangles",
+"bbox": [
+[
+-84.992,
+-85.191,
+-3.207
+],
+[
+403.26,
+84.988,
+290.408
+]
+],
+"triangles": 25972,
+"source_triangles": 380490,
+"bytes": 377122,
+"parts": [
+{
+"name": "arm_lower",
+"mat": "fdm",
+"color": "#2F3134",
+"vertex_at": 0,
+"vertices": 2801,
+"index_at": 28010,
+"triangles": 3730,
+"org": [
+57.5,
+-0.0,
+141.593
+],
+"scale": 0.003436166067877516,
+"explode": [
+60.0,
+0.0,
+103.92
+],
+"source_triangles": 95646
+},
+{
+"name": "arm_upper",
+"mat": "fdm",
+"color": "#2F3134",
+"vertex_at": 50390,
+"vertices": 2470,
+"index_at": 75090,
+"triangles": 3184,
+"org": [
+195.7003,
+-0.0,
+258.3385
+],
+"scale": 0.002859538259310351,
+"explode": [
+205.41,
+0.0,
+43.66
+],
+"source_triangles": 69746
+},
+{
+"name": "ballast_disc",
+"mat": "steel",
+"color": "#4E5054",
+"vertex_at": 94194,
+"vertices": 638,
+"index_at": 100574,
+"triangles": 630,
+"org": [
+0.0004,
+-0.0099,
+10.0
+],
+"scale": 0.0023807331564501587,
+"explode": [
+0.0,
+0.0,
+-120.0
+],
+"source_triangles": 4628
+},
+{
+"name": "base",
+"mat": "fdm",
+"color": "#2F3134",
+"vertex_at": 104354,
+"vertices": 1224,
+"index_at": 116594,
+"triangles": 1706,
+"org": [
+0.0016,
+-0.0074,
+12.0
+],
+"scale": 0.002593928829636322,
+"explode": [
+0.0,
+0.0,
+0.0
+],
+"source_triangles": 33884
+},
+{
+"name": "base_plate",
+"mat": "fdm",
+"color": "#2F3134",
+"vertex_at": 126830,
+"vertices": 546,
+"index_at": 132290,
+"triangles": 538,
+"org": [
+0.0005,
+-0.0021,
+-1.6033
+],
+"scale": 0.0025330224326616836,
+"explode": [
+0.0,
+0.0,
+-70.0
+],
+"source_triangles": 3376
+},
+{
+"name": "bayonet_ring",
+"mat": "fdm",
+"color": "#3A3D41",
+"vertex_at": 135518,
+"vertices": 526,
+"index_at": 140778,
+"triangles": 526,
+"org": [
+365.7028,
+0.0048,
+212.9718
+],
+"scale": 0.0018471764896802734,
+"explode": [
+237.55,
+0.0,
+-166.34
+],
+"source_triangles": 3218
+},
+{
+"name": "bolt_1",
+"mat": "steel",
+"color": "#6E7276",
+"vertex_at": 143934,
+"vertices": 382,
+"index_at": 147754,
+"triangles": 378,
+"org": [
+0.0,
+4.5,
+42.0
+],
+"scale": 0.0006256294442579424,
+"explode": [
+0.0,
+-85.0,
+0.0
+],
+"source_triangles": 1660
+},
+{
+"name": "bolt_2",
+"mat": "steel",
+"color": "#6E7276",
+"vertex_at": 150022,
+"vertices": 382,
+"index_at": 153842,
+"triangles": 378,
+"org": [
+115.0,
+4.5,
+241.1859
+],
+"scale": 0.0006256294442579424,
+"explode": [
+0.0,
+-85.0,
+-0.0
+],
+"source_triangles": 1660
+},
+{
+"name": "bolt_3",
+"mat": "steel",
+"color": "#6E7276",
+"vertex_at": 156110,
+"vertices": 382,
+"index_at": 159930,
+"triangles": 378,
+"org": [
+276.3957,
+4.5,
+275.4913
+],
+"scale": 0.0006256294442579424,
+"explode": [
+0.0,
+-85.0,
+0.0
+],
+"source_triangles": 1660
+},
+{
+"name": "cable_clip_1",
+"mat": "fdm",
+"color": "#3A3D41",
+"vertex_at": 162198,
+"vertices": 362,
+"index_at": 165818,
+"triangles": 354,
+"org": [
+57.486,
+0.0912,
+124.9723
+],
+"scale": 0.00046921115437159914,
+"explode": [
+0.0,
+-70.0,
+0.0
+],
+"source_triangles": 1456
+},
+{
+"name": "cable_clip_2",
+"mat": "fdm",
+"color": "#3A3D41",
+"vertex_at": 167942,
+"vertices": 334,
+"index_at": 171282,
+"triangles": 322,
+"org": [
+94.2884,
+0.0901,
+188.7121
+],
+"scale": 0.000469179241047586,
+"explode": [
+0.0,
+-70.0,
+-0.0
+],
+"source_triangles": 1222
+},
+{
+"name": "cable_clip_3",
+"mat": "fdm",
+"color": "#3A3D41",
+"vertex_at": 173214,
+"vertices": 364,
+"index_at": 176854,
+"triangles": 352,
+"org": [
+185.1961,
+0.0887,
+247.6208
+],
+"scale": 0.0004691358604644199,
+"explode": [
+-0.0,
+-70.0,
+-0.0
+],
+"source_triangles": 1444
+},
+{
+"name": "cable_clip_4",
+"mat": "fdm",
+"color": "#3A3D41",
+"vertex_at": 178966,
+"vertices": 314,
+"index_at": 182106,
+"triangles": 302,
+"org": [
+225.5446,
+0.0918,
+256.1971
+],
+"scale": 0.00046923004333401097,
+"explode": [
+0.0,
+-70.0,
+0.0
+],
+"source_triangles": 1060
+},
+{
+"name": "diffuser",
+"mat": "glow",
+"color": "#FFF4E2",
+"vertex_at": 183918,
+"vertices": 300,
+"index_at": 186918,
+"triangles": 296,
+"org": [
+363.8437,
+0.0,
+214.2666
+],
+"scale": 0.0016635717003769036,
+"explode": [
+188.4,
+0.0,
+-131.92
+],
+"source_triangles": 1020
+},
+{
+"name": "heatsink",
+"mat": "aluminium",
+"color": "#B9BCC0",
+"vertex_at": 188694,
+"vertices": 514,
+"index_at": 193834,
+"triangles": 414,
+"org": [
+348.7646,
+-0.003,
+224.5997
+],
+"scale": 0.0012208562158201636,
+"explode": [
+90.11,
+0.0,
+-63.09
+],
+"source_triangles": 1992
+},
+{
+"name": "knob_1",
+"mat": "fdm",
+"color": "#F4A300",
+"vertex_at": 196318,
+"vertices": 1229,
+"index_at": 208608,
+"triangles": 1386,
+"org": [
+0.0,
+18.1997,
+42.0
+],
+"scale": 0.00036608473943988045,
+"explode": [
+0.0,
+85.0,
+0.0
+],
+"source_triangles": 15540
+},
+{
+"name": "knob_2",
+"mat": "fdm",
+"color": "#F4A300",
+"vertex_at": 216924,
+"vertices": 1234,
+"index_at": 229264,
+"triangles": 1390,
+"org": [
+115.0002,
+18.2001,
+241.1862
+],
+"scale": 0.0003662410899885341,
+"explode": [
+0.0,
+85.0,
+-0.0
+],
+"source_triangles": 15602
+},
+{
+"name": "knob_3",
+"mat": "fdm",
+"color": "#F4A300",
+"vertex_at": 237604,
+"vertices": 1236,
+"index_at": 249964,
+"triangles": 1386,
+"org": [
+276.3927,
+18.1995,
+275.4922
+],
+"scale": 0.0003651552511446825,
+"explode": [
+0.0,
+85.0,
+0.0
+],
+"source_triangles": 15510
+},
+{
+"name": "knuckle_base",
+"mat": "fdm",
+"color": "#2F3134",
+"vertex_at": 258280,
+"vertices": 1117,
+"index_at": 269450,
+"triangles": 1552,
+"org": [
+0.0006,
+0.0008,
+34.5049
+],
+"scale": 0.0006257859548825487,
+"explode": [
+0.0,
+0.0,
+60.0
+],
+"source_triangles": 27984
+},
+{
+"name": "led_module",
+"mat": "glow",
+"color": "#E8E4DA",
+"vertex_at": 278762,
+"vertices": 553,
+"index_at": 284292,
+"triangles": 720,
+"org": [
+353.8051,
+0.0033,
+221.2878
+],
+"scale": 0.0009767904481565628,
+"explode": [
+139.26,
+0.0,
+-97.51
+],
+"source_triangles": 6052
+},
+{
+"name": "nut_1",
+"mat": "steel",
+"color": "#6E7276",
+"vertex_at": 288612,
+"vertices": 176,
+"index_at": 290372,
+"triangles": 164,
+"org": [
+0.0,
+22.4,
+42.0
+],
+"scale": 0.00012334055884129564,
+"explode": [
+0.0,
+130.0,
+0.0
+],
+"source_triangles": 316
+},
+{
+"name": "nut_2",
+"mat": "steel",
+"color": "#6E7276",
+"vertex_at": 291356,
+"vertices": 176,
+"index_at": 293116,
+"triangles": 164,
+"org": [
+115.0,
+22.4,
+241.1859
+],
+"scale": 0.00012064441412329859,
+"explode": [
+0.0,
+130.0,
+-0.0
+],
+"source_triangles": 316
+},
+{
+"name": "nut_3",
+"mat": "steel",
+"color": "#6E7276",
+"vertex_at": 294100,
+"vertices": 176,
+"index_at": 295860,
+"triangles": 164,
+"org": [
+276.3943,
+22.4,
+275.4913
+],
+"scale": 0.000122869411655591,
+"explode": [
+0.0,
+130.0,
+-0.0
+],
+"source_triangles": 316
+},
+{
+"name": "power_cable",
+"mat": "rubber",
+"color": "#16171A",
+"vertex_at": 296844,
+"vertices": 954,
+"index_at": 306384,
+"triangles": 1892,
+"org": [
+133.7665,
+-48.5748,
+148.5305
+],
+"scale": 0.0044991636594941785,
+"explode": [
+-0.0,
+150.0,
+-40.0
+],
+"source_triangles": 41632
+},
+{
+"name": "screw_base_1",
+"mat": "steel",
+"color": "#8A8E93",
+"vertex_at": 317736,
+"vertices": 258,
+"index_at": 320316,
+"triangles": 254,
+"org": [
+-15.9996,
+0.0,
+19.0
+],
+"scale": 0.00015259254737998596,
+"explode": [
+0.0,
+0.0,
+110.0
+],
+"source_triangles": 750
+},
+{
+"name": "screw_base_2",
+"mat": "steel",
+"color": "#8A8E93",
+"vertex_at": 321840,
+"vertices": 258,
+"index_at": 324420,
+"triangles": 254,
+"org": [
+16.0004,
+0.0,
+19.0
+],
+"scale": 0.00015259254737998596,
+"explode": [
+0.0,
+0.0,
+110.0
+],
+"source_triangles": 750
+},
+{
+"name": "screw_plate_1",
+"mat": "steel",
+"color": "#8A8E93",
+"vertex_at": 325944,
+"vertices": 235,
+"index_at": 328294,
+"triangles": 232,
+"org": [
+81.0,
+0.0,
+1.4
+],
+"scale": 0.00014038514431720506,
+"explode": [
+0.0,
+0.0,
+-120.0
+],
+"source_triangles": 636
+},
+{
+"name": "screw_plate_2",
+"mat": "steel",
+"color": "#8A8E93",
+"vertex_at": 329686,
+"vertices": 235,
+"index_at": 332036,
+"triangles": 232,
+"org": [
+0.0,
+81.0,
+1.4
+],
+"scale": 0.00014038514795529489,
+"explode": [
+0.0,
+0.0,
+-120.0
+],
+"source_triangles": 636
+},
+{
+"name": "screw_plate_3",
+"mat": "steel",
+"color": "#8A8E93",
+"vertex_at": 333428,
+"vertices": 235,
+"index_at": 335778,
+"triangles": 232,
+"org": [
+-81.0,
+0.0,
+1.4
+],
+"scale": 0.00014038514431720506,
+"explode": [
+0.0,
+0.0,
+-120.0
+],
+"source_triangles": 636
+},
+{
+"name": "screw_plate_4",
+"mat": "steel",
+"color": "#8A8E93",
+"vertex_at": 337170,
+"vertices": 236,
+"index_at": 339530,
+"triangles": 232,
+"org": [
+0.0,
+-81.0,
+1.4
+],
+"scale": 0.00014038514431720506,
+"explode": [
+0.0,
+0.0,
+-120.0
+],
+"source_triangles": 636
+},
+{
+"name": "shade",
+"mat": "fdm",
+"color": "#2F3134",
+"vertex_at": 340922,
+"vertices": 2282,
+"index_at": 363742,
+"triangles": 2230,
+"org": [
+329.4061,
+0.0,
+227.9946
+],
+"scale": 0.0020148079108685472,
+"explode": [
+57.34,
+0.0,
+-40.15
+],
+"source_triangles": 29506
+}
+]
+}

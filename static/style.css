@@ -153,3 +153,96 @@ figcaption { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: 
   .site-nav a:not(.nav-cta):not(.lang) { display: none; }
   .brand img { height: 32px; }
 }
+
+/* ---------------------------------------------------------------- Cascade
+   The machine holds the left of the screen and stays there; the content runs
+   down the right. Nothing slides across - a fixed anchor is easier to read than
+   a moving one, and the assembly is already the thing that moves.
+
+   Content floats: no cards, no panels, no tinted bands. A work item is an image
+   with a title under it, a service is a heading and a list, and the paper shows
+   through everything. Boxes fight a drawing; hairlines and space do not.
+   Below 1360px there is no room to split, so none of this applies. */
+:root {
+  --mc-col: 46vw; --mc-edge: clamp(24px, 3vw, 56px);
+}
+.machine { display: none; }
+
+@media (min-width: 1360px) {
+  body.has-machine .machine {
+    display: block; position: fixed; inset: 0 auto 0 0; width: 54vw;
+    z-index: 0; pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, #000 0 62%, transparent 94%);
+    mask-image: linear-gradient(to right, #000 0 62%, transparent 94%);
+  }
+  body.has-machine > header,
+  body.has-machine > section,
+  body.has-machine > footer { position: relative; z-index: 1; }
+
+  /* every section is the same right-hand column */
+  body.has-machine .hero,
+  body.has-machine .band {
+    max-width: var(--mc-col); margin-left: auto; margin-right: var(--mc-edge);
+    background: none; padding-left: 0; padding-right: 0;
+  }
+  body.has-machine .band.alt > * { max-width: none; margin-inline: 0; }
+  /* taking the panels away also took away every line on the page. The sections
+     still need to be told apart, so they get a rule instead of a box. */
+  body.has-machine .band { border-top: 1px solid var(--line); }
+  body.has-machine .hero { border-top: 0; }
+
+  /* NO shape-outside here. Wrapping text around the machine needs a float in the
+     flow; the machine is fixed to the viewport. The two cannot stay aligned, and
+     forcing them to overlap only puts the headline on top of the drawing. The
+     shape file is kept - it becomes usable the moment the machine is pinned per
+     section instead of to the window. */
+  body.has-machine .hero,
+  body.has-machine .work-grid,
+  body.has-machine .services,
+  body.has-machine .process { grid-template-columns: 1fr; }
+  body.has-machine .site-head { max-width: none; }
+  body.has-machine .site-foot {
+    max-width: var(--mc-col); margin-left: auto; margin-right: var(--mc-edge);
+  }
+  body.has-machine .contact { text-align: left; }
+  body.has-machine .contact .lede { margin-left: 0; }
+
+  /* ---- floating, not boxed */
+  body.has-machine .card {
+    border: 0; border-radius: 0; background: none; overflow: visible;
+  }
+  body.has-machine .card:hover { transform: none; box-shadow: none; }
+  body.has-machine .card:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+  body.has-machine .card figure { background: none; aspect-ratio: 16 / 10; }
+  body.has-machine .card-body { padding: 14px 0 0; }
+  body.has-machine .work-grid { gap: 56px; }
+  body.has-machine .service {
+    background: none; border: 0; border-radius: 0; padding: 0;
+    border-top: 1px solid var(--line); padding-top: 22px;
+  }
+  body.has-machine .services { gap: 30px; }
+  body.has-machine .service .price { border-top: 0; }
+  body.has-machine .process { gap: 24px; }
+  body.has-machine .process li { border-top: 1px solid var(--line); padding-top: 16px; }
+
+  .mc-box { position: absolute; inset: 0; }
+  .mc-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mc-flat {
+    position: absolute; left: 8%; top: 50%; width: 40%;
+    transform: translateY(-50%); aspect-ratio: var(--mc-aspect);
+  }
+  .mc-stage { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
+  .mc-stage[data-stage="6"] { opacity: 1; }
+  .machine.is-3d .mc-flat { display: none; }
+
+  .mc-legend {
+    position: absolute; left: var(--mc-edge); bottom: 28px; z-index: 1;
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; line-height: 1.75;
+  }
+  .mc-title {
+    display: block; font-family: Manrope, sans-serif; font-size: 13px;
+    letter-spacing: .02em; color: var(--ink); margin-bottom: 4px;
+  }
+  .mc-cap { display: none; color: var(--graphite); }
+  .machine.is-3d .mc-cap.on { display: block; color: var(--ink); }
+}

@@ -1,0 +1,465 @@
+{
+"id": "axis",
+"units": "mm",
+"up": "z",
+"stride": 10,
+"format": "pos3i16 (org+scale) + normal3i8 + pad, then u16 triangles",
+"bbox": [
+[
+-79.999,
+-80.0,
+-6.0
+],
+[
+327.396,
+83.0,
+256.939
+]
+],
+"triangles": 29978,
+"source_triangles": 331420,
+"bytes": 431628,
+"parts": [
+{
+"name": "base_plate",
+"mat": "fdm",
+"color": "#36383C",
+"vertex_at": 0,
+"vertices": 1336,
+"index_at": 13360,
+"triangles": 1332,
+"org": [
+0.0,
+0.0,
+12.5
+],
+"scale": 0.002305502115463204,
+"explode": [
+0.0,
+0.0,
+-150.0
+],
+"source_triangles": 12956
+},
+{
+"name": "base_shell",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 21352,
+"vertices": 2276,
+"index_at": 44112,
+"triangles": 3220,
+"org": [
+-0.0008,
+-0.0009,
+23.0
+],
+"scale": 0.002441466322139319,
+"explode": [
+0.0,
+0.0,
+-90.0
+],
+"source_triangles": 44806
+},
+{
+"name": "bearing_608",
+"mat": "steel",
+"color": "#B0B2B6",
+"vertex_at": 63432,
+"vertices": 402,
+"index_at": 67452,
+"triangles": 402,
+"org": [
+0.0005,
+0.0002,
+43.5
+],
+"scale": 0.0003357433758340211,
+"explode": [
+0.0,
+0.0,
+60.0
+],
+"source_triangles": 1184
+},
+{
+"name": "elbow_spacer",
+"mat": "fdm",
+"color": "#36383C",
+"vertex_at": 69864,
+"vertices": 838,
+"index_at": 78244,
+"triangles": 940,
+"org": [
+95.0628,
+0.0,
+236.9364
+],
+"scale": 0.0006714072084719382,
+"explode": [
+0.0,
+120.0,
+60.0
+],
+"source_triangles": 6460
+},
+{
+"name": "forearm_left",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 83884,
+"vertices": 1359,
+"index_at": 97474,
+"triangles": 1456,
+"org": [
+167.8359,
+-29.8,
+218.7912
+],
+"scale": 0.0028312959716714917,
+"explode": [
+145.54,
+-30.0,
+-36.29
+],
+"source_triangles": 10752
+},
+{
+"name": "forearm_right",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 106210,
+"vertices": 1357,
+"index_at": 119780,
+"triangles": 1456,
+"org": [
+167.8359,
+29.8,
+218.7912
+],
+"scale": 0.0028312959716714917,
+"explode": [
+145.54,
+30.0,
+-36.29
+],
+"source_triangles": 10752
+},
+{
+"name": "gripper_base",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 128516,
+"vertices": 895,
+"index_at": 137466,
+"triangles": 1240,
+"org": [
+261.4055,
+0.0007,
+165.0285
+],
+"scale": 0.000929318323640925,
+"explode": [
+75.0,
+0.0,
+-129.9
+],
+"source_triangles": 11236
+},
+{
+"name": "inserts_m3",
+"mat": "brass",
+"color": "#C4A052",
+"vertex_at": 144906,
+"vertices": 2150,
+"index_at": 166406,
+"triangles": 1688,
+"org": [
+122.2356,
+6.5625,
+124.3498
+],
+"scale": 0.005333260526210929,
+"explode": [
+-0.0,
+-150.0,
+90.0
+],
+"source_triangles": 20800
+},
+{
+"name": "jaw_left",
+"mat": "fdm",
+"color": "#F4A300",
+"vertex_at": 176534,
+"vertices": 736,
+"index_at": 183894,
+"triangles": 1308,
+"org": [
+308.9282,
+0.0,
+122.313
+],
+"scale": 0.0007869897299254967,
+"explode": [
+105.0,
+0.0,
+-181.87
+],
+"source_triangles": 12478
+},
+{
+"name": "jaw_right",
+"mat": "fdm",
+"color": "#F4A300",
+"vertex_at": 191742,
+"vertices": 773,
+"index_at": 199472,
+"triangles": 1384,
+"org": [
+274.2909,
+0.0004,
+102.3121
+],
+"scale": 0.0007870165062666659,
+"explode": [
+125.0,
+0.0,
+-216.51
+],
+"source_triangles": 13996
+},
+{
+"name": "nuts_m3",
+"mat": "steel",
+"color": "#B0B2B6",
+"vertex_at": 207776,
+"vertices": 524,
+"index_at": 213016,
+"triangles": 464,
+"org": [
+148.6618,
+31.25,
+166.4682
+],
+"scale": 0.004624039488606819,
+"explode": [
+-0.0,
+-210.0,
+150.0
+],
+"source_triangles": 1580
+},
+{
+"name": "screws_m3",
+"mat": "steel",
+"color": "#B0B2B6",
+"vertex_at": 215800,
+"vertices": 2696,
+"index_at": 242760,
+"triangles": 2184,
+"org": [
+123.6207,
+9.8801,
+116.9735
+],
+"scale": 0.005397519204681086,
+"explode": [
+0.0,
+-150.0,
+150.0
+],
+"source_triangles": 34820
+},
+{
+"name": "servo_base",
+"mat": "abs",
+"color": "#1E2026",
+"vertex_at": 255864,
+"vertices": 828,
+"index_at": 264144,
+"triangles": 1122,
+"org": [
+-10.3506,
+0.0,
+26.0028
+],
+"scale": 0.0008344870300227774,
+"explode": [
+0.0,
+0.0,
+-40.0
+],
+"source_triangles": 14352
+},
+{
+"name": "servo_elbow",
+"mat": "abs",
+"color": "#1E2026",
+"vertex_at": 270876,
+"vertices": 813,
+"index_at": 279006,
+"triangles": 1118,
+"org": [
+82.7652,
+60.5025,
+218.6955
+],
+"scale": 0.0008507037426906084,
+"explode": [
+0.0,
+170.0,
+0.0
+],
+"source_triangles": 14240
+},
+{
+"name": "servo_gripper",
+"mat": "abs",
+"color": "#1E2026",
+"vertex_at": 285714,
+"vertices": 682,
+"index_at": 292534,
+"triangles": 1074,
+"org": [
+271.1005,
+-20.0009,
+147.8162
+],
+"scale": 0.000864224339745161,
+"explode": [
+100.0,
+0.0,
+-173.21
+],
+"source_triangles": 13168
+},
+{
+"name": "servo_shoulder",
+"mat": "abs",
+"color": "#1E2026",
+"vertex_at": 298978,
+"vertices": 810,
+"index_at": 307078,
+"triangles": 1112,
+"org": [
+-0.0015,
+60.5036,
+76.0108
+],
+"scale": 0.0008344972748837465,
+"explode": [
+0.0,
+150.0,
+0.0
+],
+"source_triangles": 14096
+},
+{
+"name": "shoulder_yoke",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 313750,
+"vertices": 1257,
+"index_at": 326320,
+"triangles": 2122,
+"org": [
+-0.0,
+-0.0009,
+95.9985
+],
+"scale": 0.0014647911286686586,
+"explode": [
+0.0,
+0.0,
+190.0
+],
+"source_triangles": 32844
+},
+{
+"name": "turntable",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 339052,
+"vertices": 1244,
+"index_at": 351492,
+"triangles": 1536,
+"org": [
+0.0056,
+0.0,
+58.0
+],
+"scale": 0.0014652768282136944,
+"explode": [
+0.0,
+0.0,
+120.0
+],
+"source_triangles": 17206
+},
+{
+"name": "upper_arm_left",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 360708,
+"vertices": 1666,
+"index_at": 377368,
+"triangles": 1784,
+"org": [
+47.5318,
+-24.5,
+166.4682
+],
+"scale": 0.002761045795817522,
+"explode": [
+50.33,
+-30.0,
+74.61
+],
+"source_triangles": 16128
+},
+{
+"name": "upper_arm_right",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 388072,
+"vertices": 1670,
+"index_at": 404772,
+"triangles": 1784,
+"org": [
+47.5318,
+24.5,
+166.4682
+],
+"scale": 0.002761045795817522,
+"explode": [
+50.33,
+30.0,
+74.61
+],
+"source_triangles": 16128
+},
+{
+"name": "wrist_bracket",
+"mat": "fdm",
+"color": "#80848A",
+"vertex_at": 415476,
+"vertices": 864,
+"index_at": 424116,
+"triangles": 1252,
+"org": [
+240.6089,
+0.0,
+200.6423
+],
+"scale": 0.0008240623601017667,
+"explode": [
+106.73,
+0.0,
+-26.61
+],
+"source_triangles": 11438
+}
+]
+}

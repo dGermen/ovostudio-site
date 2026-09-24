@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ovo Studio</title>
+<meta name="description" content="Ovo Studio: industrial design, CAD and DFM. Real assemblies in real time: Cascade, Drift, Stem, the Skincare set and Axis.">
+<meta name="theme-color" content="#9ea5b3">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="immersive.css">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}
+</script>
+</head>
+<body class="is-loading">
+
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<!-- loader: real progress over the five assemblies, then the way in -->
+<div id="loader" role="status" aria-live="polite">
+  <div class="ld-count"><span id="ldPct">000</span></div>
+  <div class="ld-bar" aria-hidden="true"><i id="ldBar"></i></div>
+  <div class="ld-file" id="ldFile">Loading geometry</div>
+  <div class="ld-enter" id="ldEnter">
+    <button type="button" class="ld-btn" data-enter="1">[ Enter ]</button>
+    <button type="button" class="ld-btn ghost" data-enter="0">Enter without sound</button>
+  </div>
+  <p class="ld-note">Ovo Studio · Industrial design · CAD · DFM</p>
+</div>
+
+<!-- HUD: fixed chrome that lives over the scene -->
+<header class="hud hud-top">
+  <a class="brand" href="../" aria-label="Ovo Studio home">
+    <svg viewBox="0 -4 310 108" aria-hidden="true"><g fill-rule="evenodd"><path d="M0 50 a51.5 51.5 0 1 0 103 0 a51.5 51.5 0 1 0 -103 0 Z M17 50 a34.5 34.5 0 1 0 69 0 a34.5 34.5 0 1 0 -69 0 Z"/><path class="v" d="M109 0 L132.85 85.29 A23 23 0 0 0 177.15 85.29 L201 0 L182.31 0 L159.82 80.45 A5 5 0 0 1 150.18 80.45 L127.69 0 Z"/><path d="M207 50 a51.5 51.5 0 1 0 103 0 a51.5 51.5 0 1 0 -103 0 Z M224 50 a34.5 34.5 0 1 0 69 0 a34.5 34.5 0 1 0 -69 0 Z"/></g><path d="M41.5 50 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z"/><path d="M248.5 50 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z"/></svg>
+  </a>
+  <nav class="hud-nav" aria-label="Sections">
+    <a href="#studio" data-jump="studio">Studio</a>
+    <a href="#work" data-jump="work">Work</a>
+    <a href="#contact" data-jump="contact">Contact</a>
+  </nav>
+  <button type="button" class="sound" id="soundBtn" aria-pressed="false">
+    <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="sound-label">Sound <b>off</b></span>
+  </button>
+</header>
+
+<div class="hud frame" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+
+<div class="hud hud-bottom" aria-hidden="true">
+  <div class="telemetry mono" id="telemetry">AZ 035° · EL 12° · R 1500</div>
+  <div class="scroll-hint mono" id="scrollHint"><span>Scroll to explore</span><i></i></div>
+  <div class="chapter mono"><span id="chapNum">00</span> <span id="chapName">Cascade</span></div>
+</div>
+
+<nav class="hud rail" aria-label="Progress">
+  <ol>
+    <li data-chap="0"><button type="button" data-jump="hero"><b>00</b><span>Cascade</span></button></li>
+    <li data-chap="1"><button type="button" data-jump="studio"><b>01</b><span>Studio</span></button></li>
+    <li data-chap="2"><button type="button" data-jump="work"><b>02</b><span>Work</span></button></li>
+    <li data-chap="3"><button type="button" data-jump="contact"><b>03</b><span>Contact</span></button></li>
+  </ol>
+  <div class="rail-bar"><i id="railFill"></i></div>
+</nav>
+
+<!-- panels: fixed text layers, faded in and out by the scroll timeline -->
+<main class="panels">
+
+  <section class="panel p-hero" data-from="-1" data-to="0.62" id="hero">
+    <p class="kicker mono" data-scramble>Industrial design · CAD · DFM · Türkiye</p>
+    <h1 class="display" data-scramble>Ovo Studio</h1>
+    <p class="lede">Industrial design, engineered to the last screw.</p>
+  </section>
+
+  <section class="panel p-copy left" data-from="1.02" data-to="1.86" id="studio">
+    <p class="idx mono" data-scramble>01 / Studio</p>
+    <p class="big">Form first. Then <em>every part</em> behind it: the mechanism, the tolerances, the draft, the fasteners.</p>
+  </section>
+
+  <section class="panel p-copy right" data-from="1.9" data-to="2.74">
+    <p class="idx mono" data-scramble>01.1 / Cascade</p>
+    <p class="big">Cascade. A hand-cranked marble machine: Archimedes screw lift, two spirals, three trays, one chime. Printed, bolted, clash-checked.</p>
+    <dl class="stats">
+      <div><dt class="mono">Parts</dt><dd data-count="92">92</dd></div>
+      <div><dt class="mono">Pairs checked</dt><dd data-count="436">436</dd></div>
+      <div><dt class="mono">Interferences</dt><dd data-count="0">0</dd></div>
+    </dl>
+  </section>
+
+  <section class="panel p-copy left" data-from="2.78" data-to="3.5">
+    <p class="idx mono" data-scramble>01.2 / Method</p>
+    <p class="big">Everything on screen is production CAD, running live. No mock-ups. If a part is here, it was modelled, toleranced and checked.</p>
+  </section>
+
+  <section class="panel p-work" data-from="4.02" data-to="8.08" id="work">
+    <div class="w-head mono"><span data-scramble>02 / Work</span><span class="w-count"><b id="wNum">01</b> / 04</span></div>
+    <h2 class="w-title" id="wTitle" data-scramble>Drift</h2>
+    <p class="w-type mono" id="wType">Portable speaker</p>
+    <p class="w-line" id="wLine"></p>
+    <dl class="w-specs" id="wSpecs"></dl>
+    <a class="w-link" id="wLink" href="../work/drift-speaker/"><span>View project</span><i aria-hidden="true">→</i></a>
+    <p class="w-note mono" id="wNote"></p>
+  </section>
+
+  <section class="panel p-contact" data-from="8.62" data-to="99" id="contact">
+    <p class="idx mono" data-scramble>03 / Contact</p>
+    <h2 class="display sm" data-scramble>Send the brief</h2>
+    <ul class="links">
+      <li><a href="mailto:hello@ovostudio.design" data-shape="1"><span class="mono">01</span>Email<em>hello@ovostudio.design</em></a></li>
+      <li><a href="#" data-shape="2" data-todo="behance"><span class="mono">02</span>Behance<em>ovostudio</em></a></li>
+      <li><a href="#" data-shape="3" data-todo="linkedin"><span class="mono">03</span>LinkedIn<em>Ovo Studio</em></a></li>
+      <li><a href="../" data-shape="4"><span class="mono">04</span>Main site<em>ovostudio.design</em></a></li>
+    </ul>
+    <div class="foot mono">
+      <span>© 2026 Ovo Studio</span>
+      <span>Rhino 8 · Blender · three.js</span>
+      <button type="button" data-jump="hero">Back to top ↑</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- HUD reticle that tracks the active product on screen -->
+<div class="hud reticle" id="reticle" aria-hidden="true">
+  <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+  <span class="ret-tag mono" id="retTag"></span>
+</div>
+
+<div id="noGL" hidden>
+  <p>This page needs WebGL. The regular site has all the same work:</p>
+  <a href="../">ovostudio.design →</a>
+</div>
+
+<div id="scroller" aria-hidden="true"></div>
+
+<script type="module" src="immersive.js"></script>
+</body>
+</html>

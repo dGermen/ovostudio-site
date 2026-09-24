@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ovostudio.design/sitemap.xml
+Sitemap: https://dgermen.github.io/ovostudio-site/sitemap.xml

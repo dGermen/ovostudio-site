@@ -1,0 +1,381 @@
+{
+"id": "drift",
+"units": "mm",
+"up": "z",
+"stride": 10,
+"format": "pos3i16 (org+scale) + normal3i8 + pad, then u16 triangles",
+"bbox": [
+[
+-94.498,
+-36.092,
+0.003
+],
+[
+94.495,
+43.0,
+62.5
+]
+],
+"triangles": 24490,
+"source_triangles": 2326122,
+"bytes": 343560,
+"parts": [
+{
+"name": "baffle",
+"mat": "abs",
+"color": "#35373B",
+"vertex_at": 0,
+"vertices": 200,
+"index_at": 2000,
+"triangles": 188,
+"org": [
+0.0,
+-28.8,
+31.0
+],
+"scale": 0.0008190421453891509,
+"explode": [
+0.0,
+-62.0,
+0.0
+],
+"source_triangles": 764
+},
+{
+"name": "battery",
+"mat": "aluminium",
+"color": "#9A9CA0",
+"vertex_at": 3128,
+"vertices": 686,
+"index_at": 9988,
+"triangles": 1368,
+"org": [
+-0.0014,
+10.0005,
+18.0002
+],
+"scale": 0.0018310223812622848,
+"explode": [
+0.0,
+6.0,
+0.0
+],
+"source_triangles": 40190
+},
+{
+"name": "button_1",
+"mat": "silicone",
+"color": "#F4A300",
+"vertex_at": 18196,
+"vertices": 367,
+"index_at": 21866,
+"triangles": 648,
+"org": [
+-20.9991,
+16.0,
+59.7498
+],
+"scale": 0.00015270866065508906,
+"explode": [
+0.0,
+135.0,
+38.0
+],
+"source_triangles": 9040
+},
+{
+"name": "button_2",
+"mat": "silicone",
+"color": "#F4A300",
+"vertex_at": 25754,
+"vertices": 367,
+"index_at": 29424,
+"triangles": 648,
+"org": [
+-6.9986,
+16.0009,
+59.7497
+],
+"scale": 0.0001527367758133168,
+"explode": [
+0.0,
+135.0,
+38.0
+],
+"source_triangles": 9040
+},
+{
+"name": "button_3",
+"mat": "silicone",
+"color": "#F4A300",
+"vertex_at": 33312,
+"vertices": 367,
+"index_at": 36982,
+"triangles": 648,
+"org": [
+7.0014,
+16.0,
+59.7497
+],
+"scale": 0.00015270866065508906,
+"explode": [
+0.0,
+135.0,
+38.0
+],
+"source_triangles": 9040
+},
+{
+"name": "button_4",
+"mat": "silicone",
+"color": "#F4A300",
+"vertex_at": 40870,
+"vertices": 367,
+"index_at": 44540,
+"triangles": 648,
+"org": [
+21.0009,
+16.0,
+59.7497
+],
+"scale": 0.00015270866065508906,
+"explode": [
+0.0,
+135.0,
+38.0
+],
+"source_triangles": 9040
+},
+{
+"name": "driver_left",
+"mat": "paper",
+"color": "#17181A",
+"vertex_at": 48428,
+"vertices": 454,
+"index_at": 52968,
+"triangles": 450,
+"org": [
+-39.9904,
+-14.0,
+31.0084
+],
+"scale": 0.000793822673830554,
+"explode": [
+0.0,
+-34.0,
+0.0
+],
+"source_triangles": 4348
+},
+{
+"name": "driver_right",
+"mat": "paper",
+"color": "#17181A",
+"vertex_at": 55668,
+"vertices": 454,
+"index_at": 60208,
+"triangles": 450,
+"org": [
+39.9904,
+-14.0,
+31.0084
+],
+"scale": 0.000793822673830554,
+"explode": [
+0.0,
+-34.0,
+0.0
+],
+"source_triangles": 4348
+},
+{
+"name": "end_cap_left",
+"mat": "tpe",
+"color": "#1F2023",
+"vertex_at": 62908,
+"vertices": 531,
+"index_at": 68218,
+"triangles": 926,
+"org": [
+-88.2489,
+-0.0,
+31.0
+],
+"scale": 0.0011014798360795422,
+"explode": [
+-20.0,
+-290.0,
+-0.0
+],
+"source_triangles": 18374
+},
+{
+"name": "end_cap_right",
+"mat": "tpe",
+"color": "#1F2023",
+"vertex_at": 73774,
+"vertices": 667,
+"index_at": 80444,
+"triangles": 1180,
+"org": [
+88.2475,
+-0.0048,
+31.0
+],
+"scale": 0.0011012300011745454,
+"explode": [
+20.0,
+255.0,
+-0.0
+],
+"source_triangles": 29858
+},
+{
+"name": "front_housing",
+"mat": "abs",
+"color": "#2B2C30",
+"vertex_at": 87524,
+"vertices": 1339,
+"index_at": 100914,
+"triangles": 2340,
+"org": [
+0.0011,
+-17.55,
+31.0003
+],
+"scale": 0.0028380916906413796,
+"explode": [
+0.0,
+-115.0,
+0.0
+],
+"source_triangles": 69414
+},
+{
+"name": "grille",
+"mat": "abs_hard",
+"color": "#1A1C1F",
+"vertex_at": 114954,
+"vertices": 11568,
+"index_at": 230634,
+"triangles": 12000,
+"org": [
+0.0,
+-34.3937,
+31.0
+],
+"scale": 0.002227472364729687,
+"explode": [
+0.0,
+-170.0,
+0.0
+],
+"source_triangles": 2040636
+},
+{
+"name": "passive_radiator",
+"mat": "tpe",
+"color": "#26282C",
+"vertex_at": 302634,
+"vertices": 194,
+"index_at": 304574,
+"triangles": 190,
+"org": [
+-0.007,
+25.2,
+31.0049
+],
+"scale": 0.001128877039107324,
+"explode": [
+0.0,
+98.0,
+0.0
+],
+"source_triangles": 780
+},
+{
+"name": "pcb",
+"mat": "pcb",
+"color": "#15532F",
+"vertex_at": 305714,
+"vertices": 24,
+"index_at": 305954,
+"triangles": 12,
+"org": [
+0.0,
+12.8,
+46.5
+],
+"scale": 0.0016785180211798456,
+"explode": [
+0.0,
+52.0,
+0.0
+],
+"source_triangles": 12
+},
+{
+"name": "pcb_components",
+"mat": "aluminium",
+"color": "#B8BABE",
+"vertex_at": 306026,
+"vertices": 48,
+"index_at": 306506,
+"triangles": 24,
+"org": [
+-2.0,
+15.0,
+48.0
+],
+"scale": 0.0008545182653279214,
+"explode": [
+0.0,
+52.0,
+0.0
+],
+"source_triangles": 24
+},
+{
+"name": "rear_housing",
+"mat": "abs",
+"color": "#2B2C30",
+"vertex_at": 306650,
+"vertices": 1757,
+"index_at": 324220,
+"triangles": 2506,
+"org": [
+0.0001,
+21.55,
+31.0004
+],
+"scale": 0.002838081329361536,
+"explode": [
+0.0,
+135.0,
+0.0
+],
+"source_triangles": 79710
+},
+{
+"name": "usb_flap",
+"mat": "rubber",
+"color": "#1F2023",
+"vertex_at": 339256,
+"vertices": 272,
+"index_at": 341976,
+"triangles": 264,
+"org": [
+54.2504,
+36.0,
+14.0004
+],
+"scale": 0.00031273171547134646,
+"explode": [
+0.0,
+215.0,
+0.0
+],
+"source_triangles": 1504
+}
+]
+}

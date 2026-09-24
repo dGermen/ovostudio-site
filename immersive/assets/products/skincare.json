@@ -1,0 +1,318 @@
+{
+"id": "skincare",
+"units": "mm",
+"up": "z",
+"stride": 10,
+"format": "pos3i16 (org+scale) + normal3i8 + pad, then u16 triangles",
+"bbox": [
+[
+-182.988,
+-43.996,
+0.0
+],
+[
+166.996,
+52.987,
+200.989
+]
+],
+"triangles": 27987,
+"source_triangles": 480900,
+"bytes": 347342,
+"parts": [
+{
+"name": "jar_body",
+"mat": "glass",
+"color": "#E6EAE8",
+"vertex_at": 0,
+"vertices": 1391,
+"index_at": 13910,
+"triangles": 2678,
+"org": [
+-151.9975,
+22.0,
+25.0051
+],
+"scale": 0.0009154924108114256,
+"explode": [
+0.0,
+0.0,
+0.0
+],
+"source_triangles": 39186
+},
+{
+"name": "jar_lid",
+"mat": "abs",
+"color": "#1A1B1E",
+"vertex_at": 29978,
+"vertices": 1913,
+"index_at": 49108,
+"triangles": 1983,
+"org": [
+-152.0002,
+21.9996,
+53.9998
+],
+"scale": 0.0009456954760703816,
+"explode": [
+-0.0,
+0.0,
+70.0
+],
+"source_triangles": 42140
+},
+{
+"name": "mist_bottle",
+"mat": "glass",
+"color": "#E4E9EA",
+"vertex_at": 61006,
+"vertices": 1477,
+"index_at": 75776,
+"triangles": 2902,
+"org": [
+75.9992,
+-21.9995,
+59.0002
+],
+"scale": 0.0018005883917289619,
+"explode": [
+0.0,
+0.0,
+0.0
+],
+"source_triangles": 45970
+},
+{
+"name": "mist_collar",
+"mat": "aluminium",
+"color": "#BFC2C4",
+"vertex_at": 93188,
+"vertices": 1353,
+"index_at": 106718,
+"triangles": 1640,
+"org": [
+75.9997,
+-22.0087,
+124.5003
+],
+"scale": 0.0004576750480066734,
+"explode": [
+-0.0,
+-0.0,
+80.0
+],
+"source_triangles": 28844
+},
+{
+"name": "mist_head",
+"mat": "abs",
+"color": "#1A1B1E",
+"vertex_at": 116558,
+"vertices": 861,
+"index_at": 125168,
+"triangles": 1704,
+"org": [
+75.9997,
+-22.0,
+141.4958
+],
+"scale": 0.0003202669271330054,
+"explode": [
+0.0,
+0.0,
+120.0
+],
+"source_triangles": 31098
+},
+{
+"name": "pump_bottle",
+"mat": "glass_frosted",
+"color": "#D9D4CC",
+"vertex_at": 135392,
+"vertices": 1552,
+"index_at": 150912,
+"triangles": 3042,
+"org": [
+0.0008,
+11.9985,
+75.0005
+],
+"scale": 0.002288896030220533,
+"explode": [
+0.0,
+0.0,
+0.0
+],
+"source_triangles": 50578
+},
+{
+"name": "pump_collar",
+"mat": "aluminium",
+"color": "#BFC2C4",
+"vertex_at": 169164,
+"vertices": 1524,
+"index_at": 184404,
+"triangles": 1758,
+"org": [
+-0.0012,
+11.9989,
+158.0002
+],
+"scale": 0.0005796807480312432,
+"explode": [
+0.0,
+0.0,
+70.0
+],
+"source_triangles": 33076
+},
+{
+"name": "pump_head",
+"mat": "abs",
+"color": "#1A1B1E",
+"vertex_at": 194952,
+"vertices": 875,
+"index_at": 203702,
+"triangles": 1724,
+"org": [
+-3.9988,
+11.9973,
+183.4947
+],
+"scale": 0.0005338920695477491,
+"explode": [
+0.0,
+0.0,
+110.0
+],
+"source_triangles": 31830
+},
+{
+"name": "serum_bottle",
+"mat": "glass_frosted",
+"color": "#D8DCD9",
+"vertex_at": 214046,
+"vertices": 1443,
+"index_at": 228476,
+"triangles": 2836,
+"org": [
+-71.9995,
+-17.9999,
+46.0003
+],
+"scale": 0.0014038500857728442,
+"explode": [
+0.0,
+0.0,
+0.0
+],
+"source_triangles": 43922
+},
+{
+"name": "serum_cap",
+"mat": "abs",
+"color": "#1A1B1E",
+"vertex_at": 245492,
+"vertices": 1721,
+"index_at": 262702,
+"triangles": 1900,
+"org": [
+-71.9999,
+-17.9997,
+102.9999
+],
+"scale": 0.0004577755466002142,
+"explode": [
+0.0,
+0.0,
+95.0
+],
+"source_triangles": 38660
+},
+{
+"name": "serum_pipette",
+"mat": "glass",
+"color": "#E9EDEC",
+"vertex_at": 274102,
+"vertices": 611,
+"index_at": 280212,
+"triangles": 1218,
+"org": [
+-71.9998,
+-17.9987,
+56.9999
+],
+"scale": 0.0009460545264321586,
+"explode": [
+0.0,
+0.0,
+95.0
+],
+"source_triangles": 15872
+},
+{
+"name": "tube_body",
+"mat": "abs",
+"color": "#EDE9E1",
+"vertex_at": 287520,
+"vertices": 715,
+"index_at": 294670,
+"triangles": 1426,
+"org": [
+147.9991,
+15.9997,
+87.5
+],
+"scale": 0.001754748925671723,
+"explode": [
+0.0,
+0.0,
+0.0
+],
+"source_triangles": 21760
+},
+{
+"name": "tube_cap",
+"mat": "abs_gloss",
+"color": "#F4A300",
+"vertex_at": 303226,
+"vertices": 1924,
+"index_at": 322466,
+"triangles": 2016,
+"org": [
+148.0001,
+15.9999,
+16.8019
+],
+"scale": 0.000579354338611446,
+"explode": [
+0.0,
+-0.0,
+-70.0
+],
+"source_triangles": 43542
+},
+{
+"name": "tube_crimp",
+"mat": "aluminium",
+"color": "#C6C8C9",
+"vertex_at": 334562,
+"vertices": 582,
+"index_at": 340382,
+"triangles": 1160,
+"org": [
+147.999,
+16.0,
+147.9999
+],
+"scale": 0.0005796947474009198,
+"explode": [
+0.0,
+0.0,
+0.0
+],
+"source_triangles": 14422
+}
+]
+}

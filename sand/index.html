@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ovo Studio</title>
+<meta name="description" content="Ovo Studio: industrial design, CAD and DFM. Five production assemblies drawn in sand sampled from their own CAD.">
+<meta name="theme-color" content="#08080a">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sand.css">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+</head>
+<body class="is-loading">
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="ld-count"><span id="ldPct">000</span></div>
+  <div class="ld-bar" aria-hidden="true"><i id="ldBar"></i></div>
+  <div class="ld-line" id="ldLine">Loading geometry</div>
+  <div class="ld-enter">
+    <button type="button" class="ld-btn" data-enter="1">[ Enter ]</button>
+    <button type="button" class="ld-btn ghost" data-enter="0">Enter without sound</button>
+  </div>
+</div>
+
+<header class="chrome top">
+  <a class="brand" href="../" aria-label="Ovo Studio home">
+    <svg viewBox="0 -4 310 108" aria-hidden="true"><g fill-rule="evenodd"><path d="M0 50 a51.5 51.5 0 1 0 103 0 a51.5 51.5 0 1 0 -103 0 Z M17 50 a34.5 34.5 0 1 0 69 0 a34.5 34.5 0 1 0 -69 0 Z"/><path class="v" d="M109 0 L132.85 85.29 A23 23 0 0 0 177.15 85.29 L201 0 L182.31 0 L159.82 80.45 A5 5 0 0 1 150.18 80.45 L127.69 0 Z"/><path d="M207 50 a51.5 51.5 0 1 0 103 0 a51.5 51.5 0 1 0 -103 0 Z M224 50 a34.5 34.5 0 1 0 69 0 a34.5 34.5 0 1 0 -69 0 Z"/></g><path d="M41.5 50 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z"/><path d="M248.5 50 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z"/></svg>
+  </a>
+  <div class="top-right">
+    <button type="button" class="sound" id="soundBtn" aria-pressed="false">Sound <b>off</b></button>
+    <a href="#contact" class="top-cta" data-jump="6">Contact</a>
+  </div>
+</header>
+
+<nav class="chrome index" aria-label="Sections">
+  <ol id="index">
+    <li><button type="button" data-jump="0"><b>00</b><span>Ovo</span></button></li>
+    <li><button type="button" data-jump="1"><b>01</b><span>Cascade</span></button></li>
+    <li><button type="button" data-jump="2"><b>02</b><span>Drift</span></button></li>
+    <li><button type="button" data-jump="3"><b>03</b><span>Stem</span></button></li>
+    <li><button type="button" data-jump="4"><b>04</b><span>Skincare set</span></button></li>
+    <li><button type="button" data-jump="5"><b>05</b><span>Axis</span></button></li>
+    <li><button type="button" data-jump="6"><b>06</b><span>Contact</span></button></li>
+  </ol>
+</nav>
+
+<div class="chrome bottom" aria-hidden="true">
+  <div class="hud" id="hud">262,144 grains</div>
+  <div class="hint" id="hint"><span>Scroll</span><i></i></div>
+</div>
+
+<main class="panels">
+  <section class="panel intro" data-sec="0">
+    <p class="kicker" data-scramble>Ovo Studio · Industrial design · CAD · DFM</p>
+    <h1 class="title">Industrial design, engineered to the last screw.</h1>
+    <p class="sub">Five production assemblies, each drawn in <span id="grainCount">262,144</span> grains sampled from its own CAD.</p>
+  </section>
+
+  <section class="panel work" data-sec="1">
+    <p class="kicker" data-scramble>01 · Kinetic machine</p>
+    <h2 class="name">Cascade</h2>
+    <p class="line">A hand-cranked marble machine in 92 parts. Archimedes screw lift, two spirals, three trays, one chime. Printed, bolted, clash-checked.</p>
+    <dl class="specs"><div><dt>Parts</dt><dd>92</dd></div><div><dt>Pairs checked</dt><dd>436</dd></div><div><dt>Interferences</dt><dd>0</dd></div></dl>
+  </section>
+
+  <section class="panel work" data-sec="2">
+    <p class="kicker" data-scramble>02 · Portable speaker</p>
+    <h2 class="name">Drift</h2>
+    <p class="line">Two ABS housings on a 0.2 mm shut line. 1.5° of draft off the parting plane, a 103-hole grille and not one undercut. Ready to tool.</p>
+    <dl class="specs"><div><dt>Process</dt><dd>Injection moulding</dd></div><div><dt>Parts</dt><dd>17</dd></div><div><dt>Size</dt><dd>186 × 70 × 62 mm</dd></div></dl>
+    <a class="more" href="../work/drift-speaker/">View project <i>→</i></a>
+  </section>
+
+  <section class="panel work" data-sec="3">
+    <p class="kicker" data-scramble>03 · Desk lamp</p>
+    <h2 class="name">Stem</h2>
+    <p class="line">Prints without supports, goes together without tools. Three M4 joints, tightened by hand with printed knurled knobs.</p>
+    <dl class="specs"><div><dt>Process</dt><dd>FDM · PETG</dd></div><div><dt>Supports</dt><dd>None</dd></div><div><dt>Reach</dt><dd>403 mm</dd></div></dl>
+    <a class="more" href="../work/stem-lamp/">View project <i>→</i></a>
+  </section>
+
+  <section class="panel work" data-sec="4">
+    <p class="kicker" data-scramble>04 · Render pack</p>
+    <h2 class="name">Skincare set</h2>
+    <p class="line">Five products modelled for the camera. Real glass wall thickness, so the refraction is honest, not faked in post.</p>
+    <dl class="specs"><div><dt>Products</dt><dd>5</dd></div><div><dt>Glass wall</dt><dd>3.5–4 mm</dd></div><div><dt>Output</dt><dd>Marketplace pack</dd></div></dl>
+    <a class="more" href="../work/skincare-set/">View project <i>→</i></a>
+  </section>
+
+  <section class="panel work" data-sec="5">
+    <p class="kicker" data-scramble>05 · Desktop robot arm</p>
+    <h2 class="name">Axis</h2>
+    <p class="line">Four axes, printed and bolted. Every printed joint is a machine screw into a brass heat-set insert. 62 fasteners, none in bare plastic.</p>
+    <dl class="specs"><div><dt>Axes</dt><dd>4 + gripper</dd></div><div><dt>Reach</dt><dd>241 mm</dd></div><div><dt>Fasteners</dt><dd>62</dd></div></dl>
+  </section>
+
+  <section class="panel contact" data-sec="6" id="contact">
+    <p class="kicker" data-scramble>06 · Contact</p>
+    <h2 class="name">Send the brief.</h2>
+    <ul class="links">
+      <li><a href="mailto:hello@ovostudio.design" data-shape="1"><span>Email</span><em>hello@ovostudio.design</em></a></li>
+      <li><a href="#" data-shape="3" data-todo="behance"><span>Behance</span><em>ovostudio</em></a></li>
+      <li><a href="#" data-shape="5" data-todo="linkedin"><span>LinkedIn</span><em>Ovo Studio</em></a></li>
+      <li><a href="../immersive/" data-shape="2"><span>Immersive edition</span><em>Cascade on ice</em></a></li>
+    </ul>
+    <p class="foot">© 2026 Ovo Studio · Rhino 8 · Blender · three.js</p>
+  </section>
+</main>
+
+<div id="noGL" hidden>
+  <p>This page needs WebGL 2. The regular site has all the same work:</p>
+  <a href="../">ovostudio.design →</a>
+</div>
+
+<div id="scroller" aria-hidden="true"></div>
+
+<script type="module" src="sand.js"></script>
+</body>
+</html>

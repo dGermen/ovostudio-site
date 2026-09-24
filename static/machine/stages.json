@@ -1,0 +1,69 @@
+{
+ "views": [
+  {
+   "stage": 1,
+   "label": "base",
+   "file": "stage_1_base.png",
+   "parts_cumulative": 9
+  },
+  {
+   "stage": 2,
+   "label": "drive",
+   "file": "stage_2_drive.png",
+   "parts_cumulative": 31
+  },
+  {
+   "stage": 3,
+   "label": "lift",
+   "file": "stage_3_lift.png",
+   "parts_cumulative": 45
+  },
+  {
+   "stage": 4,
+   "label": "spirals",
+   "file": "stage_4_spirals.png",
+   "parts_cumulative": 71
+  },
+  {
+   "stage": 5,
+   "label": "cascade",
+   "file": "stage_5_cascade.png",
+   "parts_cumulative": 84
+  },
+  {
+   "stage": 6,
+   "label": "chime",
+   "file": "stage_6_chime.png",
+   "parts_cumulative": 92
+  }
+ ],
+ "width_mm": 470.0,
+ "size_px": [
+  1200,
+  1500
+ ],
+ "px_per_mm": 2.5532,
+ "centre_mm": [
+  19.18,
+  1.93,
+  198.5
+ ],
+ "size_machine_mm": [
+  313.6,
+  161.9,
+  397.0
+ ],
+ "marble": {
+  "d": 16.0,
+  "feed_z": 76.0,
+  "discharge_z": 362.0,
+  "lift_x": -86.0
+ },
+ "crop_px": [
+  186,
+  230,
+  828,
+  1040
+ ],
+ "aspect": 0.7962
+}

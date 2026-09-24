@@ -1,0 +1,830 @@
+{
+"base_plate": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 0,
+"via": "explode"
+},
+"cascade_post_foot_left": {
+"v": [
+0.0,
+185.75,
+-151.98
+],
+"arrive": 1,
+"via": "explode"
+},
+"marble_dish": {
+"v": [
+0.0,
+-231.9,
+-61.84
+],
+"arrive": 2,
+"via": "explode"
+},
+"cascade_post_foot_right": {
+"v": [
+0.0,
+185.75,
+-151.98
+],
+"arrive": 3,
+"via": "explode"
+},
+"gear_plate_foot": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 4,
+"via": "explode"
+},
+"foot_1": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 5,
+"via": "explode"
+},
+"foot_2": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 6,
+"via": "explode"
+},
+"foot_3": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 7,
+"via": "explode"
+},
+"foot_4": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 8,
+"via": "explode"
+},
+"pillow_block": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 9,
+"via": "explode"
+},
+"drive_shaft": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 10,
+"via": "explode"
+},
+"bevel_pinion_drive": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 11,
+"via": "up"
+},
+"shaft_collar_2": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 12,
+"via": "explode"
+},
+"shaft_collar_1": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 13,
+"via": "explode"
+},
+"bevel_gear_lift": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 14,
+"via": "up"
+},
+"bearing_608_drive_1": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 15,
+"via": "explode"
+},
+"gear_plate_inner": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 16,
+"via": "explode"
+},
+"bearing_608_drive_3": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 17,
+"via": "explode"
+},
+"helical_gear_20t": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 18,
+"via": "explode"
+},
+"helical_gear_40t": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 19,
+"via": "explode"
+},
+"crank_shaft": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 20,
+"via": "explode"
+},
+"gear_standoff_front": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 21,
+"via": "explode"
+},
+"gear_standoff_back": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 22,
+"via": "explode"
+},
+"bearing_608_drive_2": {
+"v": [
+153.64,
+0.0,
+184.37
+],
+"arrive": 23,
+"via": "radial+up"
+},
+"gear_plate_outer": {
+"v": [
+151.98,
+-185.75,
+0.0
+],
+"arrive": 24,
+"via": "explode"
+},
+"bearing_608_drive_4": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 25,
+"via": "explode"
+},
+"flywheel": {
+"v": [
+240.0,
+0.0,
+0.0
+],
+"arrive": 26,
+"via": "explode"
+},
+"flywheel_weights_m8": {
+"v": [
+240.0,
+0.0,
+0.0
+],
+"arrive": 27,
+"via": "explode"
+},
+"crank_arm": {
+"v": [
+240.0,
+0.0,
+0.0
+],
+"arrive": 28,
+"via": "explode"
+},
+"crank_knob": {
+"v": [
+240.0,
+0.0,
+0.0
+],
+"arrive": 29,
+"via": "explode"
+},
+"knob_sleeve": {
+"v": [
+240.0,
+0.0,
+0.0
+],
+"arrive": 30,
+"via": "explode"
+},
+"feed_funnel": {
+"v": [
+0.0,
+-233.85,
+-53.97
+],
+"arrive": 31,
+"via": "explode"
+},
+"flight_d": {
+"v": [
+0.0,
+-129.08,
+202.33
+],
+"arrive": 32,
+"via": "explode"
+},
+"flight_a": {
+"v": [
+0.0,
+-113.78,
+211.31
+],
+"arrive": 33,
+"via": "explode"
+},
+"flight_b": {
+"v": [
+0.0,
+-121.24,
+207.12
+],
+"arrive": 34,
+"via": "explode"
+},
+"lift_bearing_housing": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 35,
+"via": "explode"
+},
+"bearing_608_lift_lower": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 36,
+"via": "explode"
+},
+"lift_channel_a": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 37,
+"via": "explode"
+},
+"lift_channel_b": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 38,
+"via": "explode"
+},
+"lift_shaft": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 39,
+"via": "explode"
+},
+"lift_channel_c": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 40,
+"via": "explode"
+},
+"lift_channel_d": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 41,
+"via": "explode"
+},
+"lift_bearing_cap": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 42,
+"via": "explode"
+},
+"bearing_608_lift_upper": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 43,
+"via": "explode"
+},
+"flight_c": {
+"v": [
+-240.0,
+0.01,
+0.0
+],
+"arrive": 44,
+"via": "radial"
+},
+"spiral_spoke_9": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 45,
+"via": "up"
+},
+"spiral_spoke_1": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 46,
+"via": "up"
+},
+"spiral_spoke_4": {
+"v": [
+-82.08,
+-225.53,
+0.0
+],
+"arrive": 47,
+"via": "explode"
+},
+"spiral_spoke_6": {
+"v": [
+-225.53,
+82.08,
+0.0
+],
+"arrive": 48,
+"via": "explode"
+},
+"flip_flop_gate": {
+"v": [
+0.0,
+-221.19,
+93.13
+],
+"arrive": 49,
+"via": "explode"
+},
+"discharge_chute": {
+"v": [
+0.0,
+-222.83,
+89.13
+],
+"arrive": 50,
+"via": "explode"
+},
+"spiral_spoke_7": {
+"v": [
+101.43,
+-217.51,
+0.0
+],
+"arrive": 51,
+"via": "explode"
+},
+"spiral_rail_inner": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 52,
+"via": "explode"
+},
+"post_saddle": {
+"v": [
+0.0,
+0.0,
+-240.0
+],
+"arrive": 53,
+"via": "explode"
+},
+"spiral_post": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 54,
+"via": "explode"
+},
+"spiral_rail_outer": {
+"v": [
+0.0,
+0.0,
+240.0
+],
+"arrive": 55,
+"via": "explode"
+},
+"spiral_spoke_3": {
+"v": [
+-101.43,
+217.51,
+0.0
+],
+"arrive": 56,
+"via": "explode"
+},
+"spiral_spoke_2": {
+"v": [
+225.53,
+-82.08,
+0.0
+],
+"arrive": 57,
+"via": "explode"
+},
+"spiral_spoke_8": {
+"v": [
+82.08,
+225.53,
+0.0
+],
+"arrive": 58,
+"via": "explode"
+},
+"spiral_spoke_5": {
+"v": [
+217.51,
+101.43,
+0.0
+],
+"arrive": 59,
+"via": "explode"
+},
+"gate_frame": {
+"v": [
+-239.97,
+3.52,
+0.0
+],
+"arrive": 60,
+"via": "radial"
+},
+"column_spoke_8": {
+"v": [
+-240.0,
+0.0,
+0.0
+],
+"arrive": 61,
+"via": "radial"
+},
+"column_spoke_1": {
+"v": [
+-240.0,
+0.0,
+0.0
+],
+"arrive": 62,
+"via": "radial"
+},
+"column_spoke_6": {
+"v": [
+-239.34,
+17.82,
+0.0
+],
+"arrive": 63,
+"via": "radial"
+},
+"column_spoke_3": {
+"v": [
+-239.34,
+-17.82,
+0.0
+],
+"arrive": 64,
+"via": "radial"
+},
+"column_rail_outer": {
+"v": [
+-240.0,
+-0.0,
+0.0
+],
+"arrive": 65,
+"via": "radial"
+},
+"column_rail_inner": {
+"v": [
+-240.0,
+0.0,
+0.0
+],
+"arrive": 66,
+"via": "radial"
+},
+"column_spoke_5": {
+"v": [
+-53.4,
+-233.98,
+0.0
+],
+"arrive": 67,
+"via": "explode"
+},
+"column_spoke_4": {
+"v": [
+-53.4,
+233.98,
+0.0
+],
+"arrive": 68,
+"via": "explode"
+},
+"column_spoke_7": {
+"v": [
+-216.23,
+-104.13,
+0.0
+],
+"arrive": 69,
+"via": "explode"
+},
+"column_spoke_2": {
+"v": [
+-216.23,
+104.13,
+0.0
+],
+"arrive": 70,
+"via": "explode"
+},
+"tray_2": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 71,
+"via": "explode"
+},
+"tray_3": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 72,
+"via": "explode"
+},
+"tray_1": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 73,
+"via": "explode"
+},
+"cascade_bracket_3l": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 74,
+"via": "explode"
+},
+"cascade_bracket_2l": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 75,
+"via": "explode"
+},
+"cascade_bracket_1l": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 76,
+"via": "explode"
+},
+"cascade_bracket_4l": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 77,
+"via": "explode"
+},
+"cascade_post_left": {
+"v": [
+-174.48,
+164.79,
+0.0
+],
+"arrive": 78,
+"via": "radial"
+},
+"cascade_bracket_2r": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 79,
+"via": "explode"
+},
+"cascade_bracket_1r": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 80,
+"via": "explode"
+},
+"cascade_bracket_4r": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 81,
+"via": "explode"
+},
+"cascade_bracket_3r": {
+"v": [
+0.0,
+240.0,
+0.0
+],
+"arrive": 82,
+"via": "explode"
+},
+"cascade_post_right": {
+"v": [
+210.43,
+115.4,
+0.0
+],
+"arrive": 83,
+"via": "radial"
+},
+"chime_bar_2": {
+"v": [
+0.0,
+229.88,
+68.96
+],
+"arrive": 84,
+"via": "axis"
+},
+"inserts_m3": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 85,
+"via": "explode"
+},
+"chime_rail": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 86,
+"via": "explode"
+},
+"chime_bar_3": {
+"v": [
+0.0,
+229.88,
+68.96
+],
+"arrive": 87,
+"via": "axis"
+},
+"chime_bar_1": {
+"v": [
+0.0,
+-229.88,
+68.96
+],
+"arrive": 88,
+"via": "axis"
+},
+"marbles_16mm": {
+"v": [
+0.0,
+-204.4,
+125.78
+],
+"arrive": 89,
+"via": "explode"
+},
+"nuts_m3": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 90,
+"via": "explode"
+},
+"screws_m3": {
+"v": [
+0.0,
+-240.0,
+0.0
+],
+"arrive": 91,
+"via": "explode"
+}
+}
