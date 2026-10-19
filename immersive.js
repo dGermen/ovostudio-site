@@ -144,19 +144,19 @@ const WORK = [
     model: "drift", name: "Drift", type: "Portable speaker",
     line: "Two ABS housings on a 0.2 mm shut line. 1.5° of draft off the parting plane, a 103-hole grille and not one undercut. Ready to tool.",
     specs: [["Process", "Injection moulding"], ["Parts", "17"], ["Size", "186 × 70 × 62 mm"]],
-    href: "../work/drift-speaker/",
+    href: "en/work/drift-speaker/",
   },
   {
     model: "stem", name: "Stem", type: "Desk lamp",
     line: "Prints without supports, goes together without tools. Three M4 joints, tightened by hand with printed knurled knobs.",
     specs: [["Process", "FDM · PETG"], ["Supports", "None"], ["Reach", "403 mm"]],
-    href: "../work/stem-lamp/",
+    href: "en/work/stem-lamp/",
   },
   {
     model: "skincare", name: "Skincare set", type: "Render pack",
     line: "Five products modelled for the camera. Real glass wall thickness, so the refraction is honest, not faked in post.",
     specs: [["Products", "5"], ["Glass wall", "3.5–4 mm"], ["Output", "Marketplace pack"]],
-    href: "../work/skincare-set/",
+    href: "en/work/skincare-set/",
   },
   {
     model: "axis", name: "Axis", type: "Desktop robot arm",
